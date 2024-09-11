@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { get } from 'svelte/store';
 	import { flip } from 'svelte/animate';
-	import { fade } from 'svelte/transition';
+	import { fade, slide } from 'svelte/transition';
 
 	import {
 		artistsStore,
@@ -177,60 +177,8 @@
 </svelte:head>
 
 <div class="container">
-	<div class="filters">
-		{#if slicedReleases}
-			<div class="filters__title">
-				<b
-					aria-label={!$loadingStore.isActive
-						? `Showing ${releasesOnPageStart.toLocaleString()} to ${releasesOnPageEnd.toLocaleString()} of ${finalReleases.length.toLocaleString()} results`
-						: ''}
-				>
-					{#if $loadingStore.isActive}
-						--
-					{:else}
-						{#if slicedReleases.length}{releasesOnPageStart.toLocaleString()}–{releasesOnPageEnd.toLocaleString()}{:else}0{/if}<small
-							>/{finalReleases.length.toLocaleString()}</small
-						>
-					{/if}
-				</b>
-			</div>
-		{/if}
-		<div class="filters__artists">
-			<label for="filter-artists" class="visually-hidden">Filter releases by artist</label>
-			<select
-				name="filter-artists"
-				id="filter-artists"
-				bind:value={$filtersStore.artist}
-				on:change={handleFilterChange}
-				style="max-width:{artistFilterWidth}"
-			>
-				<option value="">All Artists</option>
-				{#each Object.keys(groupedArtists) as key}
-					<optgroup label={key.toUpperCase()}>
-						{#each groupedArtists[key] as { id, name }}
-							<option value={id}>{name}</option>
-						{/each}
-					</optgroup>
-				{/each}
-			</select>
-		</div>
-		<div class="filters__type">
-			{#each $filtersStore.type as filter (filter.value)}
-				<label aria-label={`${filter.checked ? 'Exclude' : 'Include'} ${filter.value}s`}>
-					<input
-						type="checkbox"
-						name="filter"
-						bind:checked={filter.checked}
-						value={filter.value}
-						on:change={handleFilterChange}
-					/>
-					<span>{filter.value}s</span>
-				</label>
-			{/each}
-		</div>
-	</div>
 	{#if $loadingStore.isActive}
-		<div class="loading" in:fade={{ duration: 100 }} out:fade={{ duration: duration }}>
+		<div class="loading" in:fade={{ duration: duration / 2 }} out:fade={{ duration }}>
 			<LoadingSpinner width="1.5rem" height="1.5rem" />
 			<div class="loading__message">
 				<span>Loading...</span>
@@ -242,10 +190,62 @@
 			</div>
 		</div>
 	{/if}
-
 	{#if slicedReleases.length > 0}
+		<div class="filters" out:slide={{ duration }}>
+			{#if slicedReleases}
+				<div class="filters__title">
+					<b
+						aria-label={!$loadingStore.isActive
+							? `Showing ${releasesOnPageStart.toLocaleString()} to ${releasesOnPageEnd.toLocaleString()} of ${finalReleases.length.toLocaleString()} results`
+							: ''}
+					>
+						{#if $loadingStore.isActive}
+							--
+						{:else}
+							{#if slicedReleases.length}{releasesOnPageStart.toLocaleString()}–{releasesOnPageEnd.toLocaleString()}{:else}0{/if}<small
+								>/{finalReleases.length.toLocaleString()}</small
+							>
+						{/if}
+					</b>
+				</div>
+			{/if}
+			<div class="filters__artists">
+				<label for="filter-artists" class="visually-hidden">Filter releases by artist</label>
+				<select
+					name="filter-artists"
+					id="filter-artists"
+					bind:value={$filtersStore.artist}
+					on:change={handleFilterChange}
+					style="max-width:{artistFilterWidth}"
+				>
+					<option value="">All Artists</option>
+					{#each Object.keys(groupedArtists) as key}
+						<optgroup label={key.toUpperCase()}>
+							{#each groupedArtists[key] as { id, name }}
+								<option value={id}>{name}</option>
+							{/each}
+						</optgroup>
+					{/each}
+				</select>
+			</div>
+			<div class="filters__type">
+				{#each $filtersStore.type as filter (filter.value)}
+					<label aria-label={`${filter.checked ? 'Exclude' : 'Include'} ${filter.value}s`}>
+						<input
+							type="checkbox"
+							name="filter"
+							bind:checked={filter.checked}
+							value={filter.value}
+							on:change={handleFilterChange}
+						/>
+						<span>{filter.value}s</span>
+					</label>
+				{/each}
+			</div>
+		</div>
+
 		<div class="content">
-			<div class="releases">
+			<div class="releases" out:fade={{ duration }}>
 				{#each slicedReleases as release (release.id)}
 					<div animate:flip={{ duration }} in:fade={{ delay: duration / 2, duration }} class="item">
 						<AlbumListItem
@@ -304,11 +304,7 @@
 			{/if}
 		</div>
 	{:else}
-		<div
-			class="watermark"
-			in:fade={{ delay: duration / 2, duration: duration * 2 }}
-			out:fade={{ duration }}
-		>
+		<div class="watermark" in:fade={{ duration }} out:fade={{ duration }}>
 			<Canary width="10rem" />
 			<div class="message">
 				<h2>Nothing to see here.</h2>
