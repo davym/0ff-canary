@@ -1,7 +1,7 @@
 import type { Release, Artist } from '$lib/types';
 
 const headers = {
-	'User-Agent': 'GINAAPP/1.0 (gina.jarman@tmail.link)',
+	'User-Agent': 'Canary/0.0.1 (hi@0ff.dev)',
 	Accept: 'application/json'
 };
 

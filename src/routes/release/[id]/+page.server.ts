@@ -11,7 +11,7 @@ interface ReleaseGroupData {
 }
 
 const headers = {
-	'User-Agent': 'MyMusicApp/1.0 (example@example.com)',
+	'User-Agent': 'Canary/0.0.1 (hi@0ff.dev)',
 	Accept: 'application/json'
 };
 
