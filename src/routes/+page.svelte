@@ -349,7 +349,7 @@
 	}
 
 	.loading {
-		background: var(--color-bg) 000ee;
+		background: var(--color-bg-translucent);
 		position: fixed;
 		inset: 0;
 		z-index: 99;
@@ -386,7 +386,7 @@
 		position: fixed;
 		left: 0;
 		width: 100%;
-		background: var(--color-bg) 000ee;
+		background: var(--color-bg-translucent);
 		border-block-end: 1px solid var(--color-border);
 		top: 0;
 		line-height: 1rem;
