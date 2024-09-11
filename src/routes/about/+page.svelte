@@ -42,7 +42,7 @@
 			<h2>How It Works</h2>
 			<p>
 				You simply add artists you like to follow. This list of artists is stored entirely on your
-				computer in your browser. This is not accessable by this application. From there a database
+				computer in your browser. This is not accessible by this application. From there a database
 				(MusicBrainz) is queried to retrieve all releases by your artists. This release data is then
 				also stored on your computer in your browser. Until you add a new artist or refetch your
 				releases, you do not <em>need</em> to communicate with the Internet other than to fetch album
