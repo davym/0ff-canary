@@ -47,6 +47,9 @@
 					type="button"
 					on:click={() => {
 						artistsStore.remove(id);
+						if (id === $filtersStore.artist) {
+							filtersStore.update((state) => ({ ...state, artist: '' }));
+						}
 						albumPaginationStore.goToPage(1);
 					}}
 					aria-label={`Delete ${name} from artist catalog`}
