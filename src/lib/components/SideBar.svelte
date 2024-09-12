@@ -36,7 +36,7 @@
 		<a href="/about" aria-label="About CANARY">
 			<Info width="1.125rem" height="1.125rem" />
 		</a>
-		<a href="https://0ff.dev" target="_blank" rel="noopener noreferrer" aria-label="Go to 0FF.DEV">
+		<a href="#">
 			<Hash width="1.125rem" height="1.125rem" />
 		</a>
 	</section>

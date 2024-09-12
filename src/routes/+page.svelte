@@ -305,7 +305,7 @@
 		</div>
 	{:else}
 		<div class="watermark" in:fade={{ duration }} out:fade={{ duration }}>
-			<Canary width="10rem" />
+			<Canary width="9rem" />
 			<div class="message">
 				<h2>Nothing to see here.</h2>
 				<p>Try adding some artists to follow.</p>
@@ -317,7 +317,7 @@
 <style>
 	.watermark {
 		position: fixed;
-		inset: var(--grid-size) 0 0 0;
+		inset: 0;
 		padding: 2rem;
 		display: flex;
 		align-items: center;
@@ -325,15 +325,14 @@
 		flex-direction: column;
 		gap: 1rem;
 		text-align: center;
-		color: var(--color-medium);
 		font-size: 0.875rem;
 
 		& > svg {
-			opacity: 0.25;
+			opacity: 0.1;
 		}
 
 		@media screen and (min-width: 768px) {
-			inset: var(--grid-size) 0 0 var(--width-sidebar);
+			inset: 0 0 0 var(--width-sidebar);
 		}
 	}
 

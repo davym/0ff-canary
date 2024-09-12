@@ -104,14 +104,14 @@
 
 	.spinner {
 		position: absolute;
-		width: 1.5rem;
-		height: 1.5rem;
+		width: 1.25rem;
+		height: 1.25rem;
 		left: 50%;
 		top: 50%;
 		margin: -0.75rem 0 0 -0.75rem;
 		color: var(--color-bg);
 		z-index: 2;
-		opacity: 0.5;
+		opacity: 0.52;
 	}
 
 	img {
