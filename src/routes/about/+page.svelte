@@ -98,6 +98,18 @@
 					stream, tracks, etc.
 				</li>
 			</ul>
+			<hr />
+			<h2>Analytics and Data Collection</h2>
+			<p>
+				This site does not collection any identifiable data. However, it is running Plausible to
+				collect basic application usage data. This data is entirely anonomous and not tied to the
+				visitor in any way. It's simple running to see what pages are being visited and how the
+				application is being used. Visit <a
+					href="https://plausible.io/"
+					target="_blank"
+					rel="noopener noreferrer">Plausible</a
+				> to learn more.
+			</p>
 		</div>
 	</div>
 </div>
