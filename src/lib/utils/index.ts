@@ -1,5 +1,6 @@
 export { deleteOrphanedReleases } from './deleteOrphanedReleases';
 export { downloadLocalStorageItem } from './downloadLocalStorageItem';
+export { ensureHttps } from './ensureHttps';
 export { fadeImage } from './fadeImage';
 export { fetchArtistReleases, fetchCoverArt } from './fetchArtistReleases';
 export { formatTime } from './formatTime';

@@ -1,3 +1,4 @@
+import { ensureHttps } from '$lib/utils';
 import type { Release, Artist } from '$lib/types';
 
 const headers = {
@@ -14,10 +15,10 @@ export const fetchCoverArt = async (
 		const coverArtResponse = await fetch(coverArtUrl);
 		const coverArtData = await coverArtResponse.json();
 		if (coverArtData.image && (size === 'large' || size === '1200')) {
-			return coverArtData.image;
+			return ensureHttps(coverArtData.image);
 		}
 		if (coverArtData.images && coverArtData.images.length > 0) {
-			return coverArtData.images[0].thumbnails[size];
+			return ensureHttps(coverArtData.images[0].thumbnails[size]);
 		}
 	} catch (error) {
 		console.warn(`No cover art found for release group: ${releaseGroupId}`, error);
