@@ -33,7 +33,7 @@
 				Essentially, I needed a way to quickly see when any of the artists I follow release new
 				music. I don't want to sign up for some weird service that will sell my data just to
 				accomplish this simple task. <a
-					href="http://bandcamp.com"
+					href="https://bandcamp.com"
 					target="_blank"
 					rel="noopener noreferrer">Bandcamp</a
 				> is actually a fantastic way to do this and buy music directly. Unfortunately, not all artists
@@ -74,7 +74,7 @@
 			<ul>
 				<li>
 					<b>
-						<a href="http://musicbrainz.org/" target="_blank" rel="noopener noreferrer">
+						<a href="https://musicbrainz.org/" target="_blank" rel="noopener noreferrer">
 							MusicBrainz API
 						</a>
 					</b>
@@ -91,7 +91,7 @@
 				</li>
 				<li>
 					<b>
-						<a href="http://bandcamp.com" target="_blank" rel="noopener noreferrer">Bandcamp</a>
+						<a href="https://bandcamp.com" target="_blank" rel="noopener noreferrer">Bandcamp</a>
 					</b>
 					<br />
 					All release data seen on a release detail page including title, description, cover art, audio
