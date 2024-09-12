@@ -49,7 +49,11 @@
 				libraries, or for back up purposes.
 			</p>
 			<p>
-				<button on:click={() => downloadLocalStorageItem('artistsStore')} class="button">
+				<button
+					on:click={() => downloadLocalStorageItem('artistsStore')}
+					class="button"
+					disabled={!$artistsStore.length}
+				>
 					Download Artist Data
 				</button>
 			</p>
