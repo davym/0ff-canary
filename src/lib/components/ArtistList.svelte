@@ -91,6 +91,7 @@
 		color: var(--color-fg);
 		gap: 0.5em;
 		line-height: 1.75rem;
+		overflow: hidden;
 
 		&.index {
 			position: sticky;
@@ -134,7 +135,7 @@
 			padding-inline: 0;
 			width: 0;
 			transform: translateX(100%);
-			background: red;
+			background: var(--color-negative);
 		}
 
 		@media (hover: none) and (pointer: coarse) {

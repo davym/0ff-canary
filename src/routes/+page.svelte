@@ -305,11 +305,13 @@
 		</div>
 	{:else}
 		<div class="watermark" in:fade={{ duration }} out:fade={{ duration }}>
-			<Canary width="9rem" />
-			<div class="message">
-				<h2>Nothing to see here.</h2>
-				<p>Try adding some artists to follow.</p>
-			</div>
+			<Canary width="7rem" />
+			{#if !$loadingStore.isActive}
+				<div class="message">
+					<h2>Nothing to see here.</h2>
+					<p>Try adding some artists to follow.</p>
+				</div>
+			{/if}
 		</div>
 	{/if}
 </div>
@@ -328,7 +330,7 @@
 		font-size: 0.875rem;
 
 		& > svg {
-			opacity: 0.1;
+			color: var(--color-faded);
 		}
 
 		@media screen and (min-width: 768px) {

@@ -1,5 +1,5 @@
 .upload {
-	border: 0.25rem dashed var(--color-border);
+	border: 0.25rem dashed var(--color-fg);
 	text-align: center;
 	padding: 1.5rem;
 	cursor: pointer;

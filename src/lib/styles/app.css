@@ -3,6 +3,7 @@
 
 	--color-fg: #fff;
 	--color-bg: #000;
+	--color-fg-translucent: #ffffff66;
 	--color-bg-translucent: #000000ee;
 	--color-pale: #111;
 	--color-faded: #222;
@@ -19,6 +20,7 @@
 	--color-negative-muted: #600;
 	--color-positive: #0f0;
 	--color-neutral: #f90;
+	--color-neutral-muted: #630;
 
 	--grid-size: 3rem;
 
@@ -169,8 +171,8 @@ button {
 	transition: all 0.1s ease-out;
 
 	&:disabled {
-		border-color: var(--color-border);
-		color: var(--color-border);
+		border-color: var(--color-medium);
+		color: var(--color-medium);
 		cursor: default;
 	}
 
@@ -189,6 +191,27 @@ button {
 				color: var(--color-bg);
 			}
 		}
+	}
+	&.warning {
+		border-color: var(--color-neutral);
+		color: var(--color-neutral);
+
+		&:disabled {
+			border-color: var(--color-neutral-muted);
+			color: var(--color-neutral-muted);
+		}
+
+		@media (hover: hover) and (pointer: fine) {
+			&:not(:disabled):hover {
+				background: var(--color-neutral);
+				color: var(--color-bg);
+			}
+		}
+	}
+
+	&.small {
+		font-size: 0.875rem;
+		padding: 0.5rem 1rem;
 	}
 
 	&.icon {
