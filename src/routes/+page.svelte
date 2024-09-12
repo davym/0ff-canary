@@ -190,7 +190,7 @@
 			</div>
 		</div>
 	{/if}
-	{#if slicedReleases.length > 0}
+	{#if releases.length > 0}
 		<div class="filters" out:slide={{ duration }}>
 			{#if slicedReleases}
 				<div class="filters__title">
