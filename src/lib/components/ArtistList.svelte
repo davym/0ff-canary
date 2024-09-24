@@ -132,6 +132,7 @@
 		transition: transform 0.3s var(--ease-out-expo);
 		font-weight: 700;
 		text-align: center;
+		width: 1.75rem;
 
 		@media (hover: hover) and (pointer: fine) {
 			padding-inline: 0;
