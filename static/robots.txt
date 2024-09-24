@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://canary.0ff.dev/sitemap.xml
