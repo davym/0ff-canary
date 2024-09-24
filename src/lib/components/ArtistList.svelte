@@ -54,9 +54,9 @@
 						}
 						albumPaginationStore.goToPage(1);
 					}}
-					aria-label={`Delete ${name} from artist catalog`}
+					aria-label={`Delete ${name} and releases`}
 				>
-					Delete
+					-
 				</button>
 			</li>
 		{/each}
@@ -113,8 +113,7 @@
 			}
 			&:focus-visible .delete,
 			&:hover .delete {
-				width: auto;
-				padding-inline: 1em;
+				width: 1.75rem;
 				transform: translateX(0);
 			}
 		}
@@ -126,12 +125,13 @@
 		cursor: pointer;
 		flex-shrink: 0;
 		color: var(--color-fg);
-		font-size: 0.625rem;
+		font-size: 1rem;
 		text-transform: uppercase;
 		text-overflow: clip;
-		padding-inline: 1em;
+		padding: 0;
 		transition: transform 0.3s var(--ease-out-expo);
 		font-weight: 700;
+		text-align: center;
 
 		@media (hover: hover) and (pointer: fine) {
 			padding-inline: 0;
