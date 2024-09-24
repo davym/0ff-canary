@@ -12,7 +12,7 @@
 		display: flex;
 		height: var(--grid-size);
 
-		&:first-child {
+		&:first-of-type {
 			border-inline-start: none;
 		}
 
@@ -35,6 +35,7 @@
 			background: var(--color-bg);
 			transition: all 0.1s ease-out;
 
+			& + &,
 			&:first-child {
 				border-inline-start: none;
 			}
