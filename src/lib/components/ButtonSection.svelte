@@ -20,6 +20,10 @@
 			border-inline-end: none;
 		}
 
+		&:empty {
+			border-inline: none;
+		}
+
 		& > * {
 			border-inline: 1px solid var(--color-border);
 			display: flex;
