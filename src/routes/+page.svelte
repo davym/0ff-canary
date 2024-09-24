@@ -235,14 +235,16 @@
 			</div>
 		{/if}
 		<ButtonSection isFixedSize>
-			<button
-				aria-label="Filter Releases"
-				on:click={() => {
-					showModal = true;
-				}}
-			>
-				<Filter height="37.5%" />
-			</button>
+			{#if releases.length}
+				<button
+					aria-label="Filter Releases"
+					on:click={() => {
+						showModal = true;
+					}}
+				>
+					<Filter height="37.5%" />
+				</button>
+			{/if}
 		</ButtonSection>
 	</div>
 	<div class="container">
