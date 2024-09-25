@@ -61,4 +61,7 @@
 			flex-direction: row-reverse;
 		}
 	}
+	.content {
+		max-width: 72rem;
+	}
 </style>
