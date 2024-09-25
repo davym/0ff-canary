@@ -88,7 +88,7 @@
 	</div>
 </MainLayout>
 
-<Modal bind:showModal title={`Share “${album.name}’`}>
+<Modal bind:showModal title={`Share “${album.name}”`}>
 	<h3><label for="release-url">Release URL</label></h3>
 	<div class="input-group">
 		<input
