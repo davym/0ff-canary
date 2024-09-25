@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { PLAUSIBLE_API_SITE_ID, PLAUSIBLE_API_DOMAIN } from '$env/static/private';
 	import { onMount } from 'svelte';
 	import NProgress from 'nprogress';
 	import { navigating } from '$app/stores';
@@ -48,8 +49,8 @@
 	{#if $analyticsStore}
 		<script
 			defer
-			data-domain="canary.0ff.dev"
-			src="https://plausible.dvmtn.com/js/script.js"
+			data-domain={PLAUSIBLE_API_SITE_ID}
+			src={`${PLAUSIBLE_API_DOMAIN}/js/script.js`}
 		></script>
 	{/if}
 </svelte:head>
