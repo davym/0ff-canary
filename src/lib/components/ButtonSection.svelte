@@ -12,7 +12,7 @@
 		display: flex;
 		height: var(--grid-size);
 
-		&:first-of-type {
+		&:first-child {
 			border-inline-start: none;
 		}
 
