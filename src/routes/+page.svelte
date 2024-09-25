@@ -732,4 +732,7 @@
 		top: 0.5rem;
 		border-radius: 50%;
 	}
+	.container {
+		min-height: 100dvh;
+	}
 </style>
