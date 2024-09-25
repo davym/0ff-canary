@@ -27,21 +27,30 @@
 		}, 5000);
 	};
 
+	const metaTitle: string = `${album.name} by ${album.artist.name}`;
 	const metaDescription: string = `Release info for “${album.name}” by ${album.artist.name} courtesy of Canary by #0ff`;
+	const domain: string = 'canary.0ff.dev';
+	const canonical = `https://${domain}${$page.url.pathname}`;
 </script>
 
 <svelte:head>
-	<title>
-		{album.name} by {album.artist.name}
-	</title>
+	<title>{metaTitle}</title>
 	<meta name="description" content={metaDescription} />
-	<meta property="og:title" content={`${album.name} by ${album.artist.name}`} />
+	<meta property="og:title" content={metaTitle} />
 	<meta property="og:description" content={metaDescription} />
 	<meta property="og:type" content="website" />
+	<meta property="og:url" content={canonical} />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="twitter:domain" content={domain} />
+	<meta property="twitter:url" content={canonical} />
+	<meta name="twitter:title" content={metaTitle} />
+	<meta name="twitter:description" content={metaDescription} />
 	{#if album.imageUrl}
 		<meta property="og:image" content={album.imageUrl} />
+		<meta name="twitter:image" content={album.imageUrl} />
 		<link rel="preload" fetchpriority="high" as="image" href={album.imageUrl} type="image/jpeg" />
 	{/if}
+	<link rel="canonical" href={canonical} />
 </svelte:head>
 
 <MainLayout>
@@ -86,7 +95,7 @@
 			type="url"
 			name="release-url"
 			id="release-url"
-			value={`https://canary.0ff.dev${$page.url.pathname}`}
+			value={canonical}
 			class="text"
 			disabled
 			bind:this={releaseUrlInput}
