@@ -9,7 +9,7 @@ interface AlbumPaginationState {
 const initialState: AlbumPaginationState = {
 	currentPage: 1,
 	totalPages: 1,
-	albumsPerPage: 60
+	albumsPerPage: 120
 };
 
 const albumPaginationStore = writable<AlbumPaginationState>(initialState);
