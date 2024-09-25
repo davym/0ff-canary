@@ -108,6 +108,11 @@ button {
 	border: 0;
 	display: inline-block;
 	text-align: start;
+
+	&.link {
+		color: var(--color-accent-primary);
+		text-decoration: underline;
+	}
 }
 
 a {

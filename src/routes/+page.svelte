@@ -360,6 +360,30 @@
 					<span class="filter-type__label">{filter.value}s</span>
 				</label>
 			{/each}
+			{#if $filtersStore.type.some((item) => item.checked === false)}
+				<button
+					class="link"
+					on:click={() => {
+						filtersStore.update((state) => ({
+							...state,
+							type: [
+								{
+									value: 'Album',
+									checked: true
+								},
+								{
+									value: 'EP',
+									checked: true
+								},
+								{
+									value: 'Single',
+									checked: true
+								}
+							]
+						}));
+					}}>Reset</button
+				>
+			{/if}
 		</div>
 	</div>
 	<div class="filter">
@@ -381,6 +405,17 @@
 					</optgroup>
 				{/each}
 			</select>
+			{#if $filtersStore.artist !== ''}
+				<button
+					class="link"
+					on:click={() => {
+						filtersStore.update((state) => ({
+							...state,
+							artist: ''
+						}));
+					}}>Clear</button
+				>
+			{/if}
 		</div>
 	</div>
 	<div class="filter">
@@ -401,6 +436,17 @@
 							{/each}
 							<option value={0}>Big Bang 💥</option>
 						</select>
+						{#if $filtersStore.timeframe.start !== 0}
+							<button
+								class="link"
+								on:click={() => {
+									filtersStore.update((state) => ({
+										...state,
+										timeframe: { ...state.timeframe, start: 0 }
+									}));
+								}}>Clear</button
+							>
+						{/if}
 					</div>
 					<div class="filter-year__item">
 						<label class="filter-year__label" for="year-end">End</label>
@@ -415,6 +461,17 @@
 								<option value={year} disabled={year < $filtersStore.timeframe.start}>{year}</option>
 							{/each}
 						</select>
+						{#if $filtersStore.timeframe.end !== 9999}
+							<button
+								class="link"
+								on:click={() => {
+									filtersStore.update((state) => ({
+										...state,
+										timeframe: { ...state.timeframe, end: 9999 }
+									}));
+								}}>Clear</button
+							>
+						{/if}
 					</div>
 				</div>
 			{/if}
@@ -635,5 +692,9 @@
 				}
 			}
 		}
+	}
+	button.link {
+		font-size: 0.8125rem;
+		margin-block-start: 0.5rem;
 	}
 </style>
