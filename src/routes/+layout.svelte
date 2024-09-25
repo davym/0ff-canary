@@ -48,7 +48,7 @@
 	{#if $analyticsStore}
 		<script
 			defer
-			data-domain="emom.0ff.dev"
+			data-domain="canary.0ff.dev"
 			src="https://plausible.dvmtn.com/js/script.js"
 		></script>
 	{/if}
