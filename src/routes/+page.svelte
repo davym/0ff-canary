@@ -490,8 +490,6 @@
 		padding-inline: 1rem;
 		display: flex;
 		align-items: center;
-		justify-content: center;
-		text-align: center;
 
 		@media (width > 767px) {
 			padding-inline-start: 2rem;
