@@ -12,7 +12,8 @@
 	import type { BandcampAlbum, OtherAlbum } from '$lib/types';
 
 	export let data: PageData;
-	const album: BandcampAlbum | OtherAlbum = data.album;
+	$: album = data.album;
+
 	let showModal: boolean = false;
 	let releaseUrlInput: HTMLInputElement;
 	let isCopied: boolean = false;
@@ -27,10 +28,10 @@
 		}, 5000);
 	};
 
-	const metaTitle: string = `${album.name} by ${album.artist.name}`;
-	const metaDescription: string = `Release info for “${album.name}” by ${album.artist.name} courtesy of Canary by #0ff`;
-	const domain: string = 'canary.0ff.dev';
-	const canonical = `https://${domain}${$page.url.pathname}`;
+	$: metaTitle = `${album.name} by ${album.artist.name}`;
+	$: metaDescription = `Release info for “${album.name}” by ${album.artist.name} courtesy of Canary by #0ff`;
+	$: domain = 'canary.0ff.dev';
+	$: canonical = `https://${domain}${$page.url.pathname}`;
 </script>
 
 <svelte:head>
