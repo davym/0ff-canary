@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { ButtonSection } from '$lib/components';
 	import { navigateBack } from '$lib/utils';
 	import { CaretLeft } from '$lib/icons';
@@ -6,11 +7,13 @@
 
 <div class="site">
 	<header>
-		<ButtonSection isFixedSize={true}>
-			<a href="/" on:click={navigateBack} aria-label="Navigate back">
-				<CaretLeft height="37.5%" />
-			</a>
-		</ButtonSection>
+		{#if $page.url.pathname !== '/'}
+			<ButtonSection isFixedSize={true}>
+				<a href="/" on:click={navigateBack} aria-label="Navigate back">
+					<CaretLeft height="37.5%" />
+				</a>
+			</ButtonSection>
+		{/if}
 		<slot name="header">
 			<ButtonSection isFixedSize={true}></ButtonSection>
 		</slot>

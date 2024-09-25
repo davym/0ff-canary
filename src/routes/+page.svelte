@@ -487,11 +487,15 @@
 
 	.results-title {
 		height: 100%;
-		padding-inline: 0.5rem;
+		padding-inline: 1rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
+
+		@media (width > 767px) {
+			padding-inline-start: 2rem;
+		}
 
 		& h2 {
 			font-size: clamp(0.75rem, 0.5rem + 1.25vw, 0.875rem);
