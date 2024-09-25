@@ -268,70 +268,93 @@
 			</div>
 		{/if}
 		{#if releases.length > 0}
-			<div class="content">
-				<div class="releases" out:fade={{ duration }}>
-					{#each slicedReleases as release, i (release.id)}
-						<div
-							animate:flip={{ duration }}
-							in:fade={{ delay: duration / 2, duration }}
-							class="item"
-						>
-							<AlbumListItem
-								title={release.title}
-								cover={release.cover}
-								type={release.type}
-								artists={release.artists}
-								date={new Date(release.date)}
-								id={release.id}
-								loading={i > itemsToPreload - 1 ? 'lazy' : 'eager'}
-							/>
-						</div>
-					{/each}
-				</div>
-				{#if finalReleases.length > $albumPaginationStore.albumsPerPage}
-					<div class="pagination">
-						{#if $albumPaginationStore.currentPage > 1}
-							<button
-								class="button icon"
-								on:click={() => {
-									window.scrollTo({ top: 0 });
-									albumPaginationStore.decrement();
-								}}
-								aria-label="Previous page of results"
+			{#if slicedReleases.length}
+				<div class="content">
+					<div class="releases" out:fade={{ duration }}>
+						{#each slicedReleases as release, i (release.id)}
+							<div
+								animate:flip={{ duration }}
+								in:fade={{ delay: duration / 2, duration }}
+								class="item"
 							>
-								<CaretLeft width="1em" height="1em" />
-							</button>
-						{/if}
-						<label aria-label={`Page ${$albumPaginationStore.currentPage} of ${pTotal}`}>
-							<select on:change={handlePageSelect}>
-								{#each { length: pTotal } as _, i}
-									{#if $albumPaginationStore.currentPage === i + 1}
-										<option value={i + 1} selected>
-											{i + 1}/{pTotal}
-										</option>
-									{:else}
-										<option value={i + 1}>
-											{i + 1}/{pTotal}
-										</option>
-									{/if}
-								{/each}
-							</select>
-						</label>
-						{#if $albumPaginationStore.currentPage < pTotal}
-							<button
-								class="button icon"
-								on:click={() => {
-									window.scrollTo({ top: 0 });
-									albumPaginationStore.increment();
-								}}
-								aria-label="Next page of results"
-							>
-								<CaretRight width="1em" height="1em" />
-							</button>
-						{/if}
+								<AlbumListItem
+									title={release.title}
+									cover={release.cover}
+									type={release.type}
+									artists={release.artists}
+									date={new Date(release.date)}
+									id={release.id}
+									loading={i > itemsToPreload - 1 ? 'lazy' : 'eager'}
+								/>
+							</div>
+						{/each}
 					</div>
-				{/if}
-			</div>
+					{#if finalReleases.length > $albumPaginationStore.albumsPerPage}
+						<div class="pagination">
+							{#if $albumPaginationStore.currentPage > 1}
+								<button
+									class="button icon"
+									on:click={() => {
+										window.scrollTo({ top: 0 });
+										albumPaginationStore.decrement();
+									}}
+									aria-label="Previous page of results"
+								>
+									<CaretLeft width="1em" height="1em" />
+								</button>
+							{/if}
+							<label aria-label={`Page ${$albumPaginationStore.currentPage} of ${pTotal}`}>
+								<select on:change={handlePageSelect}>
+									{#each { length: pTotal } as _, i}
+										{#if $albumPaginationStore.currentPage === i + 1}
+											<option value={i + 1} selected>
+												{i + 1}/{pTotal}
+											</option>
+										{:else}
+											<option value={i + 1}>
+												{i + 1}/{pTotal}
+											</option>
+										{/if}
+									{/each}
+								</select>
+							</label>
+							{#if $albumPaginationStore.currentPage < pTotal}
+								<button
+									class="button icon"
+									on:click={() => {
+										window.scrollTo({ top: 0 });
+										albumPaginationStore.increment();
+									}}
+									aria-label="Next page of results"
+								>
+									<CaretRight width="1em" height="1em" />
+								</button>
+							{/if}
+						</div>
+					{/if}
+				</div>
+			{:else}
+				<div class="no-filtered-releases">
+					<h2>Oops!</h2>
+					<p>
+						Looks like you
+						<button
+							class="link"
+							on:click={() => {
+								showModal = true;
+							}}>filtered out</button
+						> all your releases.
+					</p>
+					<p>
+						<button
+							class="button"
+							on:click={() => {
+								filtersStore.reset();
+							}}>Reset All Filters</button
+						>
+					</p>
+				</div>
+			{/if}
 		{:else}
 			<div class="watermark" in:fade={{ duration }} out:fade={{ duration }}>
 				<Canary width="7rem" />
@@ -368,7 +391,7 @@
 			{/each}
 			{#if $filtersStore.type.some((item) => item.checked === false)}
 				<button
-					class="link"
+					class="link filter__reset-button"
 					on:click={() => {
 						filtersStore.update((state) => ({
 							...state,
@@ -413,7 +436,7 @@
 			</select>
 			{#if $filtersStore.artist !== ''}
 				<button
-					class="link"
+					class="link filter__reset-button"
 					on:click={() => {
 						filtersStore.update((state) => ({
 							...state,
@@ -430,7 +453,7 @@
 			{#if !isFilteredByCurrentYear}
 				<small>
 					(<button
-						class="link"
+						class="link filter__reset-button"
 						on:click={() => {
 							filtersStore.update((state) => ({
 								...state,
@@ -459,7 +482,7 @@
 						</select>
 						{#if $filtersStore.timeframe.start !== 0}
 							<button
-								class="link"
+								class="link filter__reset-button"
 								on:click={() => {
 									filtersStore.update((state) => ({
 										...state,
@@ -484,7 +507,7 @@
 						</select>
 						{#if $filtersStore.timeframe.end !== 9999}
 							<button
-								class="link"
+								class="link filter__reset-button"
 								on:click={() => {
 									filtersStore.update((state) => ({
 										...state,
@@ -712,7 +735,7 @@
 			}
 		}
 	}
-	button.link {
+	.filter__reset-button {
 		font-size: 0.8125rem;
 		margin-block-start: 0.5rem;
 	}
@@ -734,5 +757,20 @@
 	}
 	.container {
 		min-height: 100dvh;
+	}
+	.no-filtered-releases {
+		display: flex;
+		width: 100%;
+		height: 100dvh;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		text-align: center;
+		padding-inline: 2rem;
+
+		@media (width > 767px) {
+			height: calc(100dvh - var(--grid-size) - var(--grid-size));
+		}
 	}
 </style>
