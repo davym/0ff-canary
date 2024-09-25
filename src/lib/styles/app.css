@@ -41,6 +41,7 @@
 
 html {
 	-webkit-text-size-adjust: 100%;
+	color-scheme: dark;
 
 	&.static {
 		*,
@@ -52,6 +53,8 @@ html {
 	}
 
 	&.light {
+		color-scheme: light;
+
 		-webkit-font-smoothing: unset;
 		-moz-osx-font-smoothing: unset;
 
