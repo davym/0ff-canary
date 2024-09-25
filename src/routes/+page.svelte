@@ -195,6 +195,11 @@
 		},
 		(_, i) => Math.min(...releases.map((r) => new Date(r.date).getFullYear())) + i
 	).reverse();
+
+	$: isFilterModified = !filtersStore.isInitial($filtersStore);
+	$: isFilteredByCurrentYear =
+		$filtersStore.timeframe.start === new Date().getFullYear() &&
+		$filtersStore.timeframe.end === new Date().getFullYear();
 </script>
 
 <svelte:head>
@@ -229,7 +234,7 @@
 						{#if slicedReleases.length}{releasesOnPageStart.toLocaleString()}–{releasesOnPageEnd.toLocaleString()}{:else}0{/if}
 						<small>of</small>
 						{finalReleases.length.toLocaleString()}
-						Results
+						<small>Results</small>
 					{/if}
 				</h2>
 			</div>
@@ -241,6 +246,7 @@
 					on:click={() => {
 						showModal = true;
 					}}
+					class={isFilterModified ? 'filter-button filter-button--modified' : 'filter-button'}
 				>
 					<Filter height="37.5%" />
 				</button>
@@ -419,7 +425,22 @@
 		</div>
 	</div>
 	<div class="filter">
-		<h3>Timeframe</h3>
+		<h3>
+			Timeframe
+			{#if !isFilteredByCurrentYear}
+				<small>
+					(<button
+						class="link"
+						on:click={() => {
+							filtersStore.update((state) => ({
+								...state,
+								timeframe: { start: new Date().getFullYear(), end: new Date().getFullYear() }
+							}));
+						}}>Show this year only</button
+					>)
+				</small>
+			{/if}
+		</h3>
 		<div class="filter-year">
 			{#if years.length}
 				<div class="filter-year__group">
@@ -477,8 +498,6 @@
 			{/if}
 		</div>
 	</div>
-	<!-- <hr />
-	<div><button class="button" on:click={() => (showModal = false)}>Apply Filters</button></div> -->
 </Modal>
 
 <style>
@@ -696,5 +715,21 @@
 	button.link {
 		font-size: 0.8125rem;
 		margin-block-start: 0.5rem;
+	}
+
+	.filter-button {
+		position: relative;
+	}
+
+	.filter-button--modified::after {
+		content: '';
+		background: var(--color-accent-primary);
+		width: 0.5rem;
+		height: 0.5rem;
+		position: absolute;
+		display: block;
+		right: 0.5rem;
+		top: 0.5rem;
+		border-radius: 50%;
 	}
 </style>

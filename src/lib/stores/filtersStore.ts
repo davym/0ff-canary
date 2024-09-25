@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store';
+import deepEqual from 'deep-equal';
 
 interface FilterType {
 	value: string;
@@ -36,4 +37,18 @@ const initialState: FilterState = {
 	}
 };
 
-export const filtersStore = writable(initialState);
+const createFiltersStore = () => {
+	const { subscribe, set, update } = writable<FilterState>(structuredClone(initialState));
+
+	return {
+		subscribe,
+		set,
+		update,
+		reset: () => set(structuredClone(initialState)),
+		isInitial: (currentState: FilterState) => {
+			return deepEqual(currentState, initialState);
+		}
+	};
+};
+
+export const filtersStore = createFiltersStore();
