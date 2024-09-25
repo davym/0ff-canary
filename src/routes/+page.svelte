@@ -200,14 +200,17 @@
 	$: isFilteredByCurrentYear =
 		$filtersStore.timeframe.start === new Date().getFullYear() &&
 		$filtersStore.timeframe.end === new Date().getFullYear();
+
+	const metaDescription: string =
+		'A simple, privacy-focused web application for keeping track of new music releases by #0FF';
 </script>
 
 <svelte:head>
 	<title>Canary</title>
-	<meta
-		name="description"
-		content="A simple, privacy-focused web application for keeping track of new music releases by #0FF"
-	/>
+	<meta name="description" content={metaDescription} />
+	<meta property="og:title" content="Canary" />
+	<meta property="og:description" content={metaDescription} />
+	<meta property="og:type" content="website" />
 	{#if slicedReleases && slicedReleases.length > 0}
 		{#each { length: itemsToPreload } as _, i}
 			{#if slicedReleases[i]?.cover}

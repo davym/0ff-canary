@@ -8,6 +8,7 @@ interface ReleaseGroupData {
 	'artist-credit': Artist[];
 	'first-release-date': string;
 	'primary-type': string;
+	id: string;
 }
 
 export const load: PageServerLoad = async ({ params }) => {
@@ -32,6 +33,7 @@ export const load: PageServerLoad = async ({ params }) => {
 		artist: {
 			name: releaseGroupData['artist-credit'][0].name
 		},
+		id: releaseGroupData.id,
 		imageUrl: await fetchCoverArt(params.id, 'large'),
 		dataSource: 'other',
 		type: releaseGroupData['primary-type'],
@@ -87,7 +89,8 @@ export const load: PageServerLoad = async ({ params }) => {
 			name,
 			duration,
 			streamUrl,
-			artist: albumInfo.artist?.name || ''
+			artist: albumInfo.artist?.name || '',
+			releaseId: releaseGroupData.id
 		})),
 		releaseDate: albumInfo.releaseDate,
 		url: albumInfo.url,
@@ -95,7 +98,8 @@ export const load: PageServerLoad = async ({ params }) => {
 		imageUrl: albumInfo.imageUrl,
 		description: albumInfo.description,
 		dataSource: 'bandcamp',
-		type: releaseGroupData['primary-type']
+		type: releaseGroupData['primary-type'],
+		id: releaseGroupData.id
 	};
 
 	return {

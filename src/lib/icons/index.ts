@@ -7,6 +7,7 @@ export { default as Filter } from './Filter.svelte';
 export { default as Gear } from './Gear.svelte';
 export { default as Hash } from './Hash.svelte';
 export { default as Info } from './Info.svelte';
+export { default as Link } from './Link.svelte';
 export { default as LoadingSpinner } from './LoadingSpinner.svelte';
 export { default as Menu } from './Menu.svelte';
 export { default as PlayingAnimation } from './PlayingAnimation.svelte';

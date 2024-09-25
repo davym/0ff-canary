@@ -29,6 +29,7 @@ export interface BandcampAlbumTrack {
 	streamUrl?: string;
 	cover?: string;
 	duration?: number;
+	releaseId: string;
 }
 
 export interface BandcampAlbum {
@@ -41,6 +42,7 @@ export interface BandcampAlbum {
 	description?: string;
 	dataSource: string;
 	type: string;
+	id: string;
 }
 
 export interface OtherAlbum {
@@ -50,6 +52,7 @@ export interface OtherAlbum {
 	imageUrl?: string;
 	dataSource: string;
 	type: string;
+	id: string;
 }
 
 export interface Message {

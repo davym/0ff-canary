@@ -10,7 +10,7 @@
 		if (!track.streamUrl) {
 			return;
 		}
-		musicStore.playTrack(track.name, track.artist, track.streamUrl, track.cover);
+		musicStore.playTrack(track.name, track.artist, track.releaseId, track.streamUrl, track.cover);
 	};
 
 	$: duration = track.duration || 0;

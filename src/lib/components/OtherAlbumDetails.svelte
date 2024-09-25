@@ -10,9 +10,36 @@
 	<div class="prose">
 		<h2>Bummer :(</h2>
 		<p>
-			Looks like this album isn't available to purchase on Bandcamp. Most likely this is an artist
-			on a major label or something. Might as well stream it...
+			Looks like this release isn't available to purchase or stream on Bandcamp. Most likely this
+			artist is on a major label or predates Bandcamp itself. Here are some options to listen to
+			and/or purchase this release...
 		</p>
+		<h3>Purchase</h3>
+		<ul>
+			<li>
+				<a
+					href="https://bandcamp.com/search?q={searchString}&item_type=a"
+					target="_blank"
+					rel="noopener noreferrer">Bandcamp</a
+				>
+				<small>(it‘s worth a shot)</small>
+			</li>
+			<li>
+				<a
+					href={`https://www.discogs.com/search?q=${searchString}&type=release`}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					Discogs
+				</a>
+			</li>
+			<li>
+				<a href={`https://www.amazon.com/s?k=${searchString}`} target="_blank" rel="noopener">
+					Amazon
+				</a>
+			</li>
+		</ul>
+		<h3>Stream</h3>
 		<ul>
 			<li>
 				<a

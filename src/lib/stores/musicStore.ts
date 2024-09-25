@@ -3,6 +3,7 @@ import { writable } from 'svelte/store';
 interface MusicState {
 	title: string;
 	artist: string;
+	releaseId: string;
 	src: string;
 	isPlaying: boolean;
 	currentTime: number;
@@ -12,6 +13,7 @@ interface MusicState {
 const initialState: MusicState = {
 	title: '',
 	artist: '',
+	releaseId: '',
 	src: '',
 	cover: '',
 	isPlaying: false,
@@ -20,10 +22,17 @@ const initialState: MusicState = {
 
 const musicStore = writable(initialState);
 
-const playTrack = (title: string, artist: string, src: string, cover?: string): void => {
+const playTrack = (
+	title: string,
+	artist: string,
+	releaseId: string,
+	src: string,
+	cover?: string
+): void => {
 	musicStore.update((state) => ({
 		...state,
 		title,
+		releaseId,
 		artist,
 		src,
 		cover,

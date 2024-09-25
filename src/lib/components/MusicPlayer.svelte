@@ -13,6 +13,7 @@
 	let music: HTMLAudioElement | null = null;
 	let title: string = '';
 	let artist: string = '';
+	let releaseId: string = '';
 	let src: string = '';
 	let cover: string | undefined = '';
 	let isPlaying: boolean = false;
@@ -24,6 +25,7 @@
 	const unsubscribe = musicStore.subscribe((state) => {
 		title = state.title;
 		artist = state.artist;
+		releaseId = state.releaseId;
 		src = state.src;
 		cover = state.cover;
 		isPlaying = state.isPlaying;
@@ -81,9 +83,13 @@
 		class={$sideBarStore ? 'compact' : ''}
 	>
 		{#if cover}
-			<div class="cover">
+			<a
+				href={`/release/${$musicStore.releaseId}`}
+				class="cover"
+				aria-label={`Go to “${title}’ by ${artist}`}
+			>
 				<img src={cover} alt="{title} - {artist} Cover" loading="lazy" />
-			</div>
+			</a>
 		{/if}
 		<div class="control play-pause">
 			<button

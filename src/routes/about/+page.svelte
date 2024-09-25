@@ -1,10 +1,17 @@
 <script lang="ts">
 	import { MainLayout, Modal } from '$lib/components';
 	let showModal: boolean = false;
+
+	const metaDescription: string =
+		'A totally awesome, privacy-focused way to follow artists/bands/musicians and keep track of new releases by #0ff.';
 </script>
 
 <svelte:head>
 	<title>About Canary</title>
+	<meta name="description" content={metaDescription} />
+	<meta property="og:title" content="About Canary" />
+	<meta property="og:description" content={metaDescription} />
+	<meta property="og:type" content="website" />
 </svelte:head>
 
 <MainLayout>

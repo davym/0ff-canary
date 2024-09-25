@@ -213,6 +213,15 @@ h3 {
 hr {
 	border: 0.0625em solid var(--color-border);
 }
+.text {
+	border: 0.125rem solid var(--color-fg);
+	color: var(--color-fg);
+	background: var(--color-bg);
+	line-height: 1.25;
+	padding: 0.875rem 1.25rem;
+	display: block;
+	width: 100%;
+}
 
 button,
 select {

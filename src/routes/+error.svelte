@@ -1,6 +1,21 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { analyticsStore } from '$lib/stores';
 </script>
+
+<svelte:head>
+	{#if $analyticsStore}
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				plausible('error', {
+					props: {
+						url: window.location.pathname
+					}
+				});
+			});
+		</script>
+	{/if}
+</svelte:head>
 
 <div class="content narrow">
 	<div class="prose">

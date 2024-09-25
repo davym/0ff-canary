@@ -41,10 +41,15 @@
 			[key]: selectElement.value as 'light' | 'dark'
 		}));
 	};
+	const metaDescription: string = 'Maintain your application settings for Canary by #0ff';
 </script>
 
 <svelte:head>
-	<title>Settings - Canary</title>
+	<title>Settings</title>
+	<meta name="description" content={metaDescription} />
+	<meta property="og:title" content="Settings" />
+	<meta property="og:description" content={metaDescription} />
+	<meta property="og:type" content="website" />
 </svelte:head>
 
 <MainLayout>
