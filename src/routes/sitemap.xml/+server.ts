@@ -1,8 +1,5 @@
-import {
-	PUBLIC_PLAUSIBLE_API_DOMAIN,
-	PLAUSIBLE_API_KEY,
-	PUBLIC_PLAUSIBLE_API_SITE_ID
-} from '$env/static/private';
+import { PLAUSIBLE_API_KEY } from '$env/static/private';
+import { PUBLIC_PLAUSIBLE_API_DOMAIN, PUBLIC_PLAUSIBLE_API_SITE_ID } from '$env/static/public';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async () => {

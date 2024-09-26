@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { PUBLIC_PLAUSIBLE_API_SITE_ID, PUBLIC_PLAUSIBLE_API_DOMAIN } from '$env/static/private';
+	import { PUBLIC_PLAUSIBLE_API_SITE_ID, PUBLIC_PLAUSIBLE_API_DOMAIN } from '$env/static/public';
 	import { onMount } from 'svelte';
 	import NProgress from 'nprogress';
 	import { navigating } from '$app/stores';
