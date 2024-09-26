@@ -1,14 +1,14 @@
 import {
-	PLAUSIBLE_API_DOMAIN,
+	PUBLIC_PLAUSIBLE_API_DOMAIN,
 	PLAUSIBLE_API_KEY,
-	PLAUSIBLE_API_SITE_ID
+	PUBLIC_PLAUSIBLE_API_SITE_ID
 } from '$env/static/private';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async () => {
 	try {
 		const releasePageViewsResponse = await fetch(
-			`${PLAUSIBLE_API_DOMAIN}/api/v1/stats/breakdown?site_id=${PLAUSIBLE_API_SITE_ID}&property=event:page&filters=event:page==/release/*`,
+			`${PUBLIC_PLAUSIBLE_API_DOMAIN}/api/v1/stats/breakdown?site_id=${PUBLIC_PLAUSIBLE_API_SITE_ID}&property=event:page&filters=event:page==/release/*`,
 			{
 				headers: {
 					Authorization: `Bearer ${PLAUSIBLE_API_KEY}`,

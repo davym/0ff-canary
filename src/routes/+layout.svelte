@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { PLAUSIBLE_API_SITE_ID, PLAUSIBLE_API_DOMAIN } from '$env/static/private';
+	import { PUBLIC_PLAUSIBLE_API_SITE_ID, PUBLIC_PLAUSIBLE_API_DOMAIN } from '$env/static/private';
 	import { onMount } from 'svelte';
 	import NProgress from 'nprogress';
 	import { navigating } from '$app/stores';
@@ -49,8 +49,8 @@
 	{#if $analyticsStore}
 		<script
 			defer
-			data-domain={PLAUSIBLE_API_SITE_ID}
-			src={`${PLAUSIBLE_API_DOMAIN}/js/script.js`}
+			data-domain={PUBLIC_PLAUSIBLE_API_SITE_ID}
+			src={`${PUBLIC_PLAUSIBLE_API_DOMAIN}/js/script.js`}
 		></script>
 	{/if}
 </svelte:head>
