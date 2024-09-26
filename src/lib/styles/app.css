@@ -234,6 +234,9 @@ select {
 	padding: 0.875rem 1.25rem;
 	font-weight: 700;
 	transition: all 0.1s ease-out;
+	display: inline-flex;
+	align-items: center;
+	column-gap: 0.5em;
 
 	&.success {
 		border-color: var(--color-positive);
@@ -242,6 +245,18 @@ select {
 		@media (hover: hover) and (pointer: fine) {
 			&:not(:disabled):hover {
 				background: var(--color-positive);
+				color: var(--color-bg);
+			}
+		}
+	}
+
+	&.muted {
+		border-color: var(--color-muted);
+		color: var(--color-muted);
+
+		@media (hover: hover) and (pointer: fine) {
+			&:not(:disabled):hover {
+				background: var(--color-muted);
 				color: var(--color-bg);
 			}
 		}

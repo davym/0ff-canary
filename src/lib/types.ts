@@ -11,6 +11,10 @@ export interface Release {
 export interface Artist {
 	id: string;
 	name: string;
+	artist?: {
+		name?: string;
+		id?: string;
+	};
 }
 
 export interface GroupedArtists {
@@ -20,6 +24,7 @@ export interface GroupedArtists {
 export interface BandcampAlbumArtist {
 	url?: string;
 	name?: string;
+	id?: string;
 }
 
 export interface BandcampAlbumTrack {

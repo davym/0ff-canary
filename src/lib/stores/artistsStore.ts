@@ -27,6 +27,7 @@ function createLocalStorageStore(key: string, initialValue: Artist[]) {
 		subscribe,
 		set,
 		update,
+		isFollowing: (name: string) => value.some((artist) => artist.name === name),
 		add: ({ id, name }: { id: string; name: string }) => update((data) => [...data, { id, name }]),
 		remove: (id: string) => {
 			update((ids) => ids.filter((artist) => artist.id !== id));

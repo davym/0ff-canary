@@ -29,6 +29,7 @@
 
 	let releases: Release[] = [];
 	const rate: number = 1001;
+	const duration: number = 300;
 	let showModal: boolean = false;
 
 	const handleArtistSelect = (event: Event): void => {
@@ -153,7 +154,7 @@
 		.filter((release) => {
 			return (
 				$filtersStore.artist === '' ||
-				release.artists.some((artist) => artist.artist.id === $filtersStore.artist)
+				release.artists.some((artist) => artist.artist?.id === $filtersStore.artist)
 			);
 		})
 		.filter(
@@ -167,8 +168,6 @@
 		($albumPaginationStore.currentPage - 1) * $albumPaginationStore.albumsPerPage,
 		$albumPaginationStore.currentPage * $albumPaginationStore.albumsPerPage
 	);
-
-	const duration: number = 250;
 
 	$: sortedArtists = sortArtistsByName($artistsStore);
 	$: groupedArtists = groupArtistsByName(sortedArtists);
@@ -239,7 +238,7 @@
 	<h1 class="visually-hidden">Canary</h1>
 	<div style="display: contents;" slot="header">
 		{#if releases.length > 0 && slicedReleases}
-			<div class="results-title">
+			<div class="results-title" transition:fade={{ duration }}>
 				<h2 aria-label={releasesTitle}>
 					{#if $loadingStore.isActive}
 						--
@@ -282,8 +281,8 @@
 		{/if}
 		{#if releases.length > 0}
 			{#if slicedReleases.length}
-				<div class="content">
-					<div class="releases" out:fade={{ duration }}>
+				<div class="content" in:fade={{ duration, delay: duration }} out:fade={{ duration }}>
+					<div class="releases">
 						{#each slicedReleases as release, i (release.id)}
 							<div
 								animate:flip={{ duration }}
@@ -352,7 +351,7 @@
 					{/if}
 				</div>
 			{:else}
-				<div class="no-filtered-releases">
+				<div class="no-filtered-releases" transition:fade={{ duration }}>
 					<h2>Oops!</h2>
 					<p>
 						Looks like you

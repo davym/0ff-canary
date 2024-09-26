@@ -1,9 +1,12 @@
 <script lang="ts">
 	import truncate from 'truncate';
 	import { AudioTrack, AlbumCover } from '$lib/components';
+	import { artistsStore } from '$lib/stores';
+	import { Check } from '$lib/icons';
 	import type { BandcampAlbum } from '$lib/types';
 
 	export let album: BandcampAlbum;
+	export let isFollowing: boolean;
 	const isShortDescription: boolean = !!album.description && album.description.length < 240;
 	let isDescriptionTruncated: boolean = true;
 </script>
@@ -39,6 +42,7 @@
 			</p>
 		</div>
 	{/if}
+
 	<div class="purchase">
 		<h2>Purchase on Bandcamp</h2>
 		<p>
@@ -71,6 +75,36 @@
 					{/if}
 				{/if}
 			</p>
+		</div>
+	{/if}
+	{#if $artistsStore}
+		<div class="follow">
+			{#if isFollowing}
+				<button
+					class="button small muted"
+					on:click={() => {
+						if (album.artist.id) {
+							artistsStore.remove(album.artist.id);
+						}
+					}}
+					aria-label={`Unfollow ${album.artist.name}`}
+				>
+					Unfollow
+				</button>
+			{:else}
+				<button
+					class="button small"
+					on:click={() => {
+						if (album.artist.id && album.artist.name) {
+							artistsStore.add({ id: album.artist.id, name: album.artist.name });
+						}
+					}}
+					aria-label={`Follow ${album.artist.name}`}
+				>
+					<Check width="1em" />
+					Follow
+				</button>
+			{/if}
 		</div>
 	{/if}
 </div>
@@ -132,7 +166,7 @@
 		gap: 1rem;
 
 		@media (min-width: 1024px) {
-			width: 30%;
+			width: 35%;
 		}
 	}
 

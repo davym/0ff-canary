@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { scale } from 'svelte/transition';
+	import { backOut, backIn } from 'svelte/easing';
 	import { page } from '$app/stores';
 	import {
 		BandcampAlbumDetails,
@@ -7,9 +9,9 @@
 		ButtonSection,
 		Modal
 	} from '$lib/components';
-	import { Link } from '$lib/icons';
+	import { artistsStore } from '$lib/stores';
+	import { Link, Check } from '$lib/icons';
 	import type { PageData } from './$types';
-	import type { BandcampAlbum, OtherAlbum } from '$lib/types';
 
 	export let data: PageData;
 	$: album = data.album;
@@ -32,6 +34,8 @@
 	$: metaDescription = `Release info for “${album.name}” by ${album.artist.name} courtesy of Canary by #0ff`;
 	$: domain = 'canary.0ff.dev';
 	$: canonical = `https://${domain}${$page.url.pathname}`;
+
+	$: isFollowing = $artistsStore.some((asArtist) => asArtist.name === album.artist.name);
 </script>
 
 <svelte:head>
@@ -72,6 +76,16 @@
 			<h1>
 				<b>
 					{album.artist.name}
+					{#if isFollowing}
+						<span
+							class="following"
+							aria-label={`Following ${album.artist.name}`}
+							in:scale={{ duration: 300, easing: backOut }}
+							out:scale={{ duration: 300, easing: backIn }}
+						>
+							<Check width="0.75em" />
+						</span>
+					{/if}
 				</b>
 				{album.name}
 			</h1>
@@ -80,9 +94,9 @@
 				style={album.type ? `--color-theme: var(--color-${album.type?.toLowerCase()})` : ''}
 			>
 				{#if album.dataSource === 'bandcamp'}
-					<BandcampAlbumDetails {album} />
+					<BandcampAlbumDetails {album} {isFollowing} />
 				{:else}
-					<OtherAlbumDetails {album} />
+					<OtherAlbumDetails {album} {isFollowing} />
 				{/if}
 			</div>
 		</div>
@@ -130,9 +144,6 @@
 			flex-direction: row-reverse;
 		}
 	}
-	.content {
-		max-width: 72rem;
-	}
 
 	.input-group {
 		display: flex;
@@ -141,5 +152,10 @@
 
 	.success {
 		color: var(--color-positive);
+	}
+
+	.following {
+		color: var(--color-accent-primary);
+		display: inline-block;
 	}
 </style>

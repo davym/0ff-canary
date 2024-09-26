@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { AlbumCover } from '$lib/components';
 	import type { OtherAlbum } from '$lib/types';
+	import { artistsStore } from '$lib/stores';
+	import { Check } from '$lib/icons';
 	export let album: OtherAlbum;
+	export let isFollowing: boolean;
 
 	$: searchString = encodeURIComponent(`${album.artist.name} ${album.name}`);
 </script>
@@ -94,6 +97,36 @@
 			</p>
 		</div>
 	{/if}
+	{#if $artistsStore}
+		<div class="follow">
+			{#if isFollowing}
+				<button
+					class="button small muted"
+					on:click={() => {
+						if (album.artist.id) {
+							artistsStore.remove(album.artist.id);
+						}
+					}}
+					aria-label={`Unfollow ${album.artist.name}`}
+				>
+					Unfollow
+				</button>
+			{:else}
+				<button
+					class="button small"
+					on:click={() => {
+						if (album.artist.id && album.artist.name) {
+							artistsStore.add({ id: album.artist.id, name: album.artist.name });
+						}
+					}}
+					aria-label={`Follow ${album.artist.name}`}
+				>
+					<Check width="1em" />
+					Follow
+				</button>
+			{/if}
+		</div>
+	{/if}
 </div>
 
 <style>
@@ -103,7 +136,7 @@
 		gap: 1rem;
 
 		@media (min-width: 1024px) {
-			width: 30%;
+			width: 35%;
 		}
 	}
 

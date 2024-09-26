@@ -31,7 +31,10 @@ export const load: PageServerLoad = async ({ params }) => {
 	album = {
 		name: releaseGroupData.title,
 		artist: {
-			name: releaseGroupData['artist-credit'][0].name
+			name:
+				releaseGroupData['artist-credit'][0].name ||
+				releaseGroupData['artist-credit'][0]?.artist?.name,
+			id: releaseGroupData['artist-credit'][0]?.artist?.id
 		},
 		id: releaseGroupData.id,
 		imageUrl: await fetchCoverArt(params.id, 'large'),
@@ -81,8 +84,12 @@ export const load: PageServerLoad = async ({ params }) => {
 
 	album = {
 		artist: {
-			name: albumInfo.artist?.name,
-			url: albumInfo.artist?.url
+			name:
+				albumInfo.artist?.name ||
+				releaseGroupData['artist-credit'][0].name ||
+				releaseGroupData['artist-credit'][0]?.artist?.name,
+			url: albumInfo.artist?.url,
+			id: releaseGroupData['artist-credit'][0].artist?.id
 		},
 		tracks: albumInfo.tracks?.map(({ position, name, duration, streamUrl }) => ({
 			position,
