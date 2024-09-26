@@ -4,8 +4,9 @@ import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async () => {
 	try {
+		const today = new Date().toISOString().split('T')[0];
 		const releasePageViewsResponse = await fetch(
-			`${PUBLIC_PLAUSIBLE_API_DOMAIN}/api/v1/stats/breakdown?site_id=${PUBLIC_PLAUSIBLE_API_SITE_ID}&property=event:page&filters=event:page==/release/*`,
+			`${PUBLIC_PLAUSIBLE_API_DOMAIN}/api/v1/stats/breakdown?site_id=${PUBLIC_PLAUSIBLE_API_SITE_ID}&period=custom&date=2024-01-01,${today}&property=event:page&filters=event:page==/release/*`,
 			{
 				headers: {
 					Authorization: `Bearer ${PLAUSIBLE_API_KEY}`,
