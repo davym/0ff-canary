@@ -2,7 +2,8 @@
 	import { onMount } from 'svelte';
 	import { get } from 'svelte/store';
 	import { flip } from 'svelte/animate';
-	import { fade } from 'svelte/transition';
+	import { expoOut } from 'svelte/easing';
+	import { fade, fly } from 'svelte/transition';
 	import ogImage from '$lib/assets/og-image.png';
 
 	import {
@@ -28,9 +29,9 @@
 	} from '$lib/utils';
 
 	let releases: Release[] = [];
-	const rate: number = 1001;
-	const duration: number = 300;
 	let showModal: boolean = false;
+	const rate: number = 1001;
+	const duration: number = 200;
 
 	const handleArtistSelect = (event: Event): void => {
 		const selectElement = event.target as HTMLSelectElement;
@@ -267,7 +268,7 @@
 	</div>
 	<div class="container">
 		{#if $loadingStore.isActive}
-			<div class="loading" in:fade={{ duration: duration / 2 }} out:fade={{ duration }}>
+			<div class="loading" in:fade={{ duration }} out:fade={{ duration, delay: duration }}>
 				<LoadingSpinner width="1.5rem" height="1.5rem" />
 				<div class="loading__message">
 					<span>Loading...</span>
@@ -279,108 +280,114 @@
 				</div>
 			</div>
 		{/if}
-		{#if releases.length > 0}
-			{#if slicedReleases.length}
-				<div class="content" in:fade={{ duration, delay: duration }} out:fade={{ duration }}>
-					<div class="releases">
-						{#each slicedReleases as release, i (release.id)}
-							<div
-								animate:flip={{ duration }}
-								in:fade={{ delay: duration / 2, duration }}
-								class="item"
-							>
-								<AlbumListItem
-									title={release.title}
-									cover={release.cover}
-									type={release.type}
-									artists={release.artists}
-									date={new Date(release.date)}
-									id={release.id}
-									loading={i > itemsToPreload - 1 ? 'lazy' : 'eager'}
-								/>
-							</div>
-						{/each}
-						{#if slicedReleases.length < 6}
-							{#each { length: 6 - slicedReleases.length } as _}
-								<span></span>
-							{/each}
-						{/if}
-					</div>
-					{#if finalReleases.length > $albumPaginationStore.albumsPerPage}
-						<div class="pagination">
-							{#if $albumPaginationStore.currentPage > 1}
-								<button
-									class="button icon"
-									on:click={() => {
-										window.scrollTo({ top: 0 });
-										albumPaginationStore.decrement();
-									}}
-									aria-label="Previous page of results"
-								>
-									<CaretLeft width="1em" height="1em" />
-								</button>
-							{/if}
-							<label aria-label={`Page ${$albumPaginationStore.currentPage} of ${pTotal}`}>
-								<select on:change={handlePageSelect}>
-									{#each { length: pTotal } as _, i}
-										{#if $albumPaginationStore.currentPage === i + 1}
-											<option value={i + 1} selected>
-												{i + 1}/{pTotal}
-											</option>
-										{:else}
-											<option value={i + 1}>
-												{i + 1}/{pTotal}
-											</option>
-										{/if}
-									{/each}
-								</select>
-							</label>
-							{#if $albumPaginationStore.currentPage < pTotal}
-								<button
-									class="button icon"
-									on:click={() => {
-										window.scrollTo({ top: 0 });
-										albumPaginationStore.increment();
-									}}
-									aria-label="Next page of results"
-								>
-									<CaretRight width="1em" height="1em" />
-								</button>
-							{/if}
+		{#if releases.length > 0 && slicedReleases.length}
+			<div class="content" in:fade={{ duration, delay: duration }} out:fade={{ duration }}>
+				<div class="releases">
+					{#each slicedReleases as release, i (release.id)}
+						<div
+							animate:flip={{ duration, easing: expoOut }}
+							in:fly={{
+								delay: i * (duration / 10),
+								duration: duration * 2,
+								y: 50,
+								opacity: 0,
+								easing: expoOut
+							}}
+							class="item"
+						>
+							<AlbumListItem
+								title={release.title}
+								cover={release.cover}
+								type={release.type}
+								artists={release.artists}
+								date={new Date(release.date)}
+								id={release.id}
+								loading={i > itemsToPreload - 1 ? 'lazy' : 'eager'}
+							/>
 						</div>
+					{/each}
+					{#if slicedReleases.length < 6}
+						{#each { length: 6 - slicedReleases.length } as _}
+							<span></span>
+						{/each}
 					{/if}
 				</div>
-			{:else}
-				<div class="no-filtered-releases" transition:fade={{ duration }}>
-					<h2>Oops!</h2>
-					<p>
-						Looks like you
-						<button
-							class="link"
-							on:click={() => {
-								showModal = true;
-							}}>filtered out</button
-						> all your releases.
-					</p>
-					<p>
-						<button
-							class="button"
-							on:click={() => {
-								filtersStore.reset();
-							}}>Reset All Filters</button
-						>
-					</p>
-				</div>
-			{/if}
-		{:else}
-			<div class="watermark" in:fade={{ duration }} out:fade={{ duration }}>
-				<CanaryLayered width="10rem" />
-				{#if !$loadingStore.isActive}
-					<div class="message">
-						<h2>Nothing to see here.</h2>
-						<p>Try adding some artists to follow.</p>
+				{#if finalReleases.length > $albumPaginationStore.albumsPerPage}
+					<div class="pagination">
+						{#if $albumPaginationStore.currentPage > 1}
+							<button
+								class="button icon"
+								on:click={() => {
+									window.scrollTo({ top: 0 });
+									albumPaginationStore.decrement();
+								}}
+								aria-label="Previous page of results"
+							>
+								<CaretLeft width="1em" height="1em" />
+							</button>
+						{/if}
+						<label aria-label={`Page ${$albumPaginationStore.currentPage} of ${pTotal}`}>
+							<select on:change={handlePageSelect}>
+								{#each { length: pTotal } as _, i}
+									{#if $albumPaginationStore.currentPage === i + 1}
+										<option value={i + 1} selected>
+											{i + 1}/{pTotal}
+										</option>
+									{:else}
+										<option value={i + 1}>
+											{i + 1}/{pTotal}
+										</option>
+									{/if}
+								{/each}
+							</select>
+						</label>
+						{#if $albumPaginationStore.currentPage < pTotal}
+							<button
+								class="button icon"
+								on:click={() => {
+									window.scrollTo({ top: 0 });
+									albumPaginationStore.increment();
+								}}
+								aria-label="Next page of results"
+							>
+								<CaretRight width="1em" height="1em" />
+							</button>
+						{/if}
 					</div>
 				{/if}
+			</div>
+		{:else if releases.length > 0 && !slicedReleases.length}
+			<div
+				class="no-filtered-releases"
+				in:fade={{ duration, delay: duration }}
+				out:fade={{ duration }}
+			>
+				<h2>Oops!</h2>
+				<p>
+					Looks like you
+					<button
+						class="link"
+						on:click={() => {
+							showModal = true;
+						}}>filtered out</button
+					> all your releases.
+				</p>
+				<p>
+					<button
+						class="button"
+						on:click={() => {
+							filtersStore.reset();
+						}}>Reset All Filters</button
+					>
+				</p>
+			</div>
+		{:else if !releases.length}
+			<div class="watermark" in:fade={{ duration, delay: duration }} out:fade={{ duration }}>
+				<CanaryLayered width="10rem" />
+				<div class="message">
+					<h2>Nothing to see here.</h2>
+					<p>Try adding some artists to follow.</p>
+				</div>
 			</div>
 		{/if}
 	</div>
