@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { MainLayout, Modal } from '$lib/components';
 	import { Canary } from '$lib/icons';
+	import Off from '$lib/assets/0ff.svg';
 	let showModal: boolean = false;
 
 	const metaDescription: string =
@@ -29,6 +30,12 @@
 					releases. All data is fetched on demand from a few public external data sources (see
 					below), and stored locally on your device in <code>localStorage</code>. No information is
 					stored, transmitted, or tracked by Canary, the application doesn't even know you exist.
+				</p>
+				<p>Canary is developed and maintained by</p>
+				<p>
+					<a href="http://0ff.dev" target="_blank" rel="noopener">
+						<img src={Off} alt="#0ff" class="logo-0ff" />
+					</a>
 				</p>
 				<hr />
 				<h2>Yeah, But Why?</h2>
@@ -153,5 +160,10 @@
 		flex-wrap: wrap;
 		column-gap: 0.375em;
 		row-gap: 0.125em;
+	}
+	.logo-0ff {
+		height: 2lh;
+		width: auto;
+		display: inline-block;
 	}
 </style>
