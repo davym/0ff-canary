@@ -45,34 +45,6 @@
 </div>
 
 <style>
-	@keyframes -global-colorCycle {
-		0% {
-			color: var(--color-accent-primary);
-			filter: drop-shadow(0 0 1em currentColor);
-		}
-		16.5% {
-			color: var(--color-medium);
-		}
-		33% {
-			color: var(--color-accent-secondary);
-			filter: drop-shadow(0 0 1em currentColor);
-		}
-		49.5% {
-			color: var(--color-medium);
-		}
-		66% {
-			color: var(--color-accent-tertiary);
-			filter: drop-shadow(0 0 1em currentColor);
-		}
-		83% {
-			color: var(--color-medium);
-		}
-		100% {
-			color: var(--color-accent-primary);
-			filter: drop-shadow(0 0 1em currentColor);
-		}
-	}
-
 	.sb {
 		position: fixed;
 		left: 0;

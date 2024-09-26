@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { MainLayout, Modal } from '$lib/components';
+	import { Canary } from '$lib/icons';
 	let showModal: boolean = false;
 
 	const metaDescription: string =
@@ -18,7 +19,11 @@
 	<div class="container">
 		<div class="content narrow">
 			<div class="prose">
-				<h1>About Canary</h1>
+				<h1>
+					<span class="visually-hidden">About</span>
+					<span>Canary</span>
+					<Canary height="0.875lh" />
+				</h1>
 				<p>
 					Canary is a completely private and accountless way to follow artists and keep track of new
 					releases. All data is fetched on demand from a few public external data sources (see
@@ -140,3 +145,13 @@
 		still uncomfortable with that, you can always <a href="/settings">opt out</a> on the settings page.
 	</p>
 </Modal>
+
+<style>
+	h1 {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		column-gap: 0.375em;
+		row-gap: 0.125em;
+	}
+</style>
