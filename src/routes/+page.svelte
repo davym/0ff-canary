@@ -3,6 +3,7 @@
 	import { get } from 'svelte/store';
 	import { flip } from 'svelte/animate';
 	import { fade } from 'svelte/transition';
+	import ogImage from '$lib/assets/og-image.png';
 
 	import {
 		artistsStore,
@@ -211,6 +212,15 @@
 	<meta property="og:title" content="Canary" />
 	<meta property="og:description" content={metaDescription} />
 	<meta property="og:type" content="website" />
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:url" content="https://canary.0ff.dev" />
+	<meta name="twitter:image" content={ogImage} />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="twitter:domain" content="canary.0ff.dev" />
+	<meta property="twitter:url" content="https://canary.0ff.dev" />
+	<meta name="twitter:title" content="Canary" />
+	<meta name="twitter:description" content={metaDescription} />
+	<link rel="canonical" href="https://canary.0ff.dev" />
 	{#if slicedReleases && slicedReleases.length > 0}
 		{#each { length: itemsToPreload } as _, i}
 			{#if slicedReleases[i]?.cover}
