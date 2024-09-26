@@ -301,6 +301,11 @@
 								/>
 							</div>
 						{/each}
+						{#if slicedReleases.length < 6}
+							{#each { length: 6 - slicedReleases.length } as _}
+								<span></span>
+							{/each}
+						{/if}
 					</div>
 					{#if finalReleases.length > $albumPaginationStore.albumsPerPage}
 						<div class="pagination">

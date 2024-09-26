@@ -54,7 +54,6 @@
 		color: inherit;
 		text-decoration: none;
 		min-height: 100%;
-		max-width: 18.75rem;
 
 		&.future {
 			opacity: 0.5;
