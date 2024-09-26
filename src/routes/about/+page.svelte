@@ -31,7 +31,7 @@
 					below), and stored locally on your device in <code>localStorage</code>. No information is
 					stored, transmitted, or tracked by Canary, the application doesn't even know you exist.
 				</p>
-				<p>Canary is developed and maintained by</p>
+				<p>Canary is designed, developed, and maintained by</p>
 				<p>
 					<a href="http://0ff.dev" target="_blank" rel="noopener">
 						<img src={Off} alt="#0ff" class="logo-0ff" />
