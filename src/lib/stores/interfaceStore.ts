@@ -5,7 +5,8 @@ import type { Interface } from '$lib/types';
 let initialState: Interface = {
 	colorMode: 'dark',
 	animations:
-		isBrowser && window.matchMedia('(prefers-reduced-motion)').matches ? 'disabled' : 'enabled'
+		isBrowser && window.matchMedia('(prefers-reduced-motion)').matches ? 'disabled' : 'enabled',
+	refetch: 7
 };
 
 if (isBrowser) {

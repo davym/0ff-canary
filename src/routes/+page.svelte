@@ -4,6 +4,7 @@
 	import { flip } from 'svelte/animate';
 	import { expoOut } from 'svelte/easing';
 	import { fade, fly } from 'svelte/transition';
+	import { mergeArtists } from '$lib/utils';
 	import ogImage from '$lib/assets/og-image.png';
 
 	import {
@@ -11,7 +12,8 @@
 		releasesStore,
 		loadingStore,
 		filtersStore,
-		albumPaginationStore
+		albumPaginationStore,
+		interfaceStore
 	} from '$lib/stores';
 
 	import { AlbumListItem, MainLayout, ButtonSection, Modal } from '$lib/components';
@@ -25,7 +27,8 @@
 		sortArtistsByName,
 		groupArtistsByName,
 		getMissingArtistsFromReleases,
-		deleteOrphanedReleases
+		deleteOrphanedReleases,
+		getExpiredArtistsReleases
 	} from '$lib/utils';
 
 	let releases: Release[] = [];
@@ -55,10 +58,12 @@
 
 		const initialReleases = get(releasesStore);
 		const initialArtists = get(artistsStore);
+		const expiredArtists = getExpiredArtistsReleases(initialArtists, $interfaceStore.refetch);
 		const missingArtists = getMissingArtistsFromReleases(initialArtists, initialReleases);
+		const mergedArtists = mergeArtists(expiredArtists, missingArtists);
 
-		if (missingArtists.length) {
-			fetchData(missingArtists);
+		if (mergedArtists.length) {
+			fetchData(mergedArtists);
 		} else {
 			releases = initialReleases;
 		}
@@ -109,7 +114,11 @@
 						await delay((artists.length - i) * rate); // Wait 1 second before retrying
 						return fetchWithRetry(artistId, retries - 1);
 					}
-
+					artistsStore.update((items) =>
+						items.map((item) =>
+							item.id === artistId ? { ...item, lastFetched: new Date() } : item
+						)
+					);
 					return releases;
 				};
 
@@ -582,7 +591,9 @@
 		justify-content: center;
 		flex-direction: column;
 		gap: 0.75rem;
+	}
 
+	:global(body:has(.sb--active)) .loading {
 		@media screen and (min-width: 768px) {
 			inset: 0 0 0 var(--width-sidebar);
 		}

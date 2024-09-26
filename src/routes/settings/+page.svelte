@@ -32,13 +32,16 @@
 
 	const handleInterfaceChange = (event: Event): void => {
 		const selectElement = event.target as HTMLSelectElement;
+		const value = isNaN(Number(selectElement.value))
+			? selectElement.value
+			: Number(selectElement.value);
 		const key: string | null = selectElement.getAttribute('name');
 		if (!key) {
 			return;
 		}
 		interfaceStore.update((state) => ({
 			...state,
-			[key]: selectElement.value as 'light' | 'dark'
+			[key]: value as 'light' | 'dark' | number
 		}));
 	};
 	const metaDescription: string = 'Maintain your application settings for Canary by #0ff';
@@ -57,7 +60,6 @@
 		<div class="content narrow">
 			<div class="prose">
 				<h1>Settings</h1>
-
 				<section>
 					<h2>Interface</h2>
 					<section>
@@ -100,6 +102,23 @@
 								>
 									<option value="enabled">Enabled</option>
 									<option value="disabled">Disabled</option>
+								</select>
+							</p>
+						</div>
+					</section>
+					<section>
+						<h3>Refetch Releases</h3>
+						<div class="prose">
+							<p>
+								<select
+									bind:value={$interfaceStore.refetch}
+									on:change={handleInterfaceChange}
+									class="select small"
+									name="refetch"
+								>
+									<option value={1}>Daily</option>
+									<option value={7}>Weekly</option>
+									<option value={30}>Monthly</option>
 								</select>
 							</p>
 						</div>

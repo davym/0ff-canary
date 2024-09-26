@@ -15,6 +15,7 @@ export interface Artist {
 		name?: string;
 		id?: string;
 	};
+	lastFetched: Date;
 }
 
 export interface GroupedArtists {
@@ -74,4 +75,5 @@ export interface SearchResult {
 export interface Interface {
 	colorMode: 'light' | 'dark';
 	animations: 'enabled' | 'disabled';
+	refetch: number;
 }
