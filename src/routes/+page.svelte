@@ -203,7 +203,7 @@
 		$filtersStore.timeframe.end === new Date().getFullYear();
 
 	const metaDescription: string =
-		'A simple, privacy-focused web application for keeping track of new music releases by #0FF';
+		'A simple, privacy-focused web application for keeping track of new music releases by #0ff';
 </script>
 
 <svelte:head>
