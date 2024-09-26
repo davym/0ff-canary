@@ -15,7 +15,7 @@
 
 	import { AlbumListItem, MainLayout, ButtonSection, Modal } from '$lib/components';
 
-	import { LoadingSpinner, CaretLeft, CaretRight, Canary, Filter } from '$lib/icons';
+	import { LoadingSpinner, CaretLeft, CaretRight, CanaryLayered, Filter } from '$lib/icons';
 
 	import type { Release, Artist } from '$lib/types';
 
@@ -370,7 +370,7 @@
 			{/if}
 		{:else}
 			<div class="watermark" in:fade={{ duration }} out:fade={{ duration }}>
-				<Canary width="7rem" />
+				<CanaryLayered width="10rem" />
 				{#if !$loadingStore.isActive}
 					<div class="message">
 						<h2>Nothing to see here.</h2>
@@ -538,23 +538,18 @@
 
 <style>
 	.watermark {
-		position: fixed;
-		inset: 0;
 		padding: 2rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
-		gap: 1rem;
+		gap: 1.5rem;
 		text-align: center;
 		font-size: 0.875rem;
+		min-height: calc(100dvh - var(--grid-size) - var(--grid-size));
 
-		& > svg {
-			color: var(--color-border);
-		}
-
-		@media screen and (min-width: 768px) {
-			inset: 0 0 0 var(--width-sidebar);
+		& p {
+			color: var(--color-muted);
 		}
 	}
 

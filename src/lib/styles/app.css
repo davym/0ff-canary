@@ -165,7 +165,7 @@ img {
 	height: auto;
 }
 
-path {
+path:not([fill]) {
 	fill: currentColor;
 }
 

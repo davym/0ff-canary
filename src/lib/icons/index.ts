@@ -1,6 +1,7 @@
 export { default as CaretLeft } from './CaretLeft.svelte';
 export { default as CaretRight } from './CaretRight.svelte';
 export { default as Canary } from './Canary.svelte';
+export { default as CanaryLayered } from './CanaryLayered.svelte';
 export { default as CD } from './CD.svelte';
 export { default as Close } from './Close.svelte';
 export { default as Filter } from './Filter.svelte';
