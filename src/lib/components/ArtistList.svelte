@@ -69,6 +69,9 @@
 		font-size: 0.8125rem;
 		padding-block: 0.5rem;
 		transition: opacity 0.1s ease-out;
+		display: flex;
+		flex-direction: column;
+		gap: 1px;
 
 		&.disabled {
 			pointer-events: none;
