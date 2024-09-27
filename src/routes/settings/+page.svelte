@@ -117,7 +117,7 @@
 									name="refetch"
 								>
 									<option value={1}>Daily</option>
-									<option value={7}>Weekly</option>
+									<option value={7} selected={!$interfaceStore.refetch}>Weekly</option>
 									<option value={30}>Monthly</option>
 								</select>
 							</p>
