@@ -1,6 +1,6 @@
 import type { Artist } from '$lib/types';
 
-export const getExpiredArtistsReleases = (artists: Artist[], refetchInterval: number): Artist[] => {
+export const getExpiredArtists = (artists: Artist[], refetchInterval: number): Artist[] => {
 	if (artists.length === 0) {
 		return [];
 	}

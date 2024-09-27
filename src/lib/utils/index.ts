@@ -4,7 +4,7 @@ export { ensureHttps } from './ensureHttps';
 export { fadeImage } from './fadeImage';
 export { fetchArtistReleases, fetchCoverArt } from './fetchArtistReleases';
 export { formatTime } from './formatTime';
-export { getExpiredArtistsReleases } from './getExpiredArtistsReleases';
+export { getExpiredArtists } from './getExpiredArtists';
 export { getMissingArtistsFromReleases } from './getMissingArtistsFromReleases';
 export { groupArtistsByName } from './groupArtistsByName';
 export { headers } from './headers';

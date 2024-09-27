@@ -28,7 +28,7 @@
 		groupArtistsByName,
 		getMissingArtistsFromReleases,
 		deleteOrphanedReleases,
-		getExpiredArtistsReleases
+		getExpiredArtists
 	} from '$lib/utils';
 
 	let releases: Release[] = [];
@@ -58,7 +58,7 @@
 
 		const initialReleases = get(releasesStore);
 		const initialArtists = get(artistsStore);
-		const expiredArtists = getExpiredArtistsReleases(initialArtists, $interfaceStore.refetch);
+		const expiredArtists = getExpiredArtists(initialArtists, $interfaceStore.refetch || 7);
 		const missingArtists = getMissingArtistsFromReleases(initialArtists, initialReleases);
 		const mergedArtists = mergeArtists(expiredArtists, missingArtists);
 
