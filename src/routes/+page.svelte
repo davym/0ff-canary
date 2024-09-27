@@ -256,7 +256,7 @@
 						{#if slicedReleases.length}{releasesOnPageStart.toLocaleString()}–{releasesOnPageEnd.toLocaleString()}{:else}0{/if}
 						<small>of</small>
 						{finalReleases.length.toLocaleString()}
-						<small>Results</small>
+						<small>releases</small>
 					{/if}
 				</h2>
 			</div>

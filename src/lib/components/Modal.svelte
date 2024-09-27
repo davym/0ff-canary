@@ -102,7 +102,7 @@
 
 	@keyframes -global-zoomIn {
 		from {
-			transform: scale(0.9) rotate(-2deg);
+			transform: scale(0.8) rotate(-10deg);
 			opacity: 0;
 		}
 		to {
