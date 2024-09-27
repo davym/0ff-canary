@@ -4,6 +4,7 @@
 	import { flip } from 'svelte/animate';
 	import { expoOut } from 'svelte/easing';
 	import { fade, fly } from 'svelte/transition';
+	import { Confetti } from 'svelte-confetti';
 	import { mergeArtists } from '$lib/utils';
 	import ogImage from '$lib/assets/og-image.png';
 
@@ -30,6 +31,7 @@
 		deleteOrphanedReleases,
 		getExpiredArtists
 	} from '$lib/utils';
+	import ToggleConfetti from '$lib/components/ToggleConfetti.svelte';
 
 	let releases: Release[] = [];
 	let showModal: boolean = false;
@@ -392,7 +394,25 @@
 			</div>
 		{:else if !releases.length}
 			<div class="watermark" in:fade={{ duration, delay: duration }} out:fade={{ duration }}>
-				<CanaryLayered width="10rem" />
+				<ToggleConfetti>
+					<div slot="label">
+						<CanaryLayered width="10rem" />
+					</div>
+					<Confetti
+						colorArray={[
+							'var(--color-accent-primary)',
+							'var(--color-accent-secondary)',
+							'var(--color-accent-tertiary)',
+							'var(--color-accent-primary)'
+						]}
+						amount={150}
+						y={[-0.9, 2]}
+						x={[-3, 3]}
+						disableForReducedMotion={true}
+						rounded={true}
+						delay={[0, 100]}
+					/>
+				</ToggleConfetti>
 				<div class="message">
 					<h2>Nothing to see here.</h2>
 					<p>Try adding some artists to follow.</p>
