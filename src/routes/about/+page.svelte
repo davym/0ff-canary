@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { MainLayout, Modal } from '$lib/components';
-	import { Canary } from '$lib/icons';
+	import { CanaryLayered } from '$lib/icons';
 	import Off from '$lib/assets/0ff.svg';
+	import ogImage from '$lib/assets/og-image.png';
 	let showModal: boolean = false;
 
 	const metaDescription: string =
@@ -14,16 +15,25 @@
 	<meta property="og:title" content="About Canary" />
 	<meta property="og:description" content={metaDescription} />
 	<meta property="og:type" content="website" />
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:url" content="https://canary.0ff.dev/about" />
+	<meta name="twitter:image" content={ogImage} />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="twitter:domain" content="canary.0ff.dev" />
+	<meta property="twitter:url" content="https://canary.0ff.dev/about" />
+	<meta name="twitter:title" content="About Canary" />
+	<meta name="twitter:description" content={metaDescription} />
+	<link rel="canonical" href="https://canary.0ff.dev/about" />
 </svelte:head>
 
 <MainLayout>
 	<div class="container">
 		<div class="content narrow">
-			<div class="prose">
+			<div class="prose center">
 				<h1>
+					<CanaryLayered width="3em" />
 					<span class="visually-hidden">About</span>
 					<span>Canary</span>
-					<Canary height="0.875lh" />
 				</h1>
 				<p>
 					Canary is a completely private and accountless way to follow artists and keep track of new
@@ -37,7 +47,11 @@
 						<img src={Off} alt="#0ff" class="logo-0ff" />
 					</a>
 				</p>
-				<hr />
+			</div>
+		</div>
+		<hr />
+		<div class="content slim">
+			<div class="prose">
 				<h2>Yeah, But Why?</h2>
 				<ol>
 					<li>I still listen to music the old fashioned way. I don't stream. I buy records.</li>
@@ -156,14 +170,20 @@
 <style>
 	h1 {
 		display: flex;
+		flex-direction: column;
 		align-items: center;
 		flex-wrap: wrap;
 		column-gap: 0.375em;
 		row-gap: 0.125em;
+		font-size: 4rem;
+		padding-block: 0.5em 0.25em;
 	}
 	.logo-0ff {
 		height: 2lh;
 		width: auto;
 		display: inline-block;
+	}
+	hr {
+		margin-block: 2.5rem;
 	}
 </style>

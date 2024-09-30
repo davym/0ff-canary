@@ -30,11 +30,10 @@
 		}, 5000);
 	};
 
+	const domain: string = 'canary.0ff.dev';
 	$: metaTitle = `${album.name} by ${album.artist.name}`;
 	$: metaDescription = `Release info for “${album.name}” by ${album.artist.name} courtesy of Canary by #0ff`;
-	$: domain = 'canary.0ff.dev';
 	$: canonical = `https://${domain}${$page.url.pathname}`;
-
 	$: isFollowing = $artistsStore.some((asArtist) => asArtist.name === album.artist.name);
 </script>
 
@@ -72,9 +71,9 @@
 		</ButtonSection>
 	</div>
 	<div class="container">
-		<div class="content">
+		<div class="content medium">
 			<h1>
-				<b>
+				<a href={`/artist/${album.artist.id}`}>
 					{album.artist.name}
 					{#if isFollowing}
 						<span
@@ -86,7 +85,7 @@
 							<Check width="0.75em" />
 						</span>
 					{/if}
-				</b>
+				</a>
 				{album.name}
 			</h1>
 			<div
@@ -127,11 +126,20 @@
 		margin-block-end: 1.5rem;
 		line-height: 1.25;
 
-		& > b {
+		& > a {
 			font-size: 1rem;
 			display: block;
 			line-height: 1.4;
 			color: var(--color-medium);
+			margin-block-end: 0.5rem;
+			text-decoration: none;
+
+			@media (hover: hover) and (pointer: fine) {
+				&:hover {
+					text-decoration: underline;
+					color: var(--color-accent-primary);
+				}
+			}
 		}
 	}
 	.album {

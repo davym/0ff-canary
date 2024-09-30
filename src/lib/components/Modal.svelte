@@ -90,6 +90,7 @@
 		align-items: center;
 		padding-inline: 1.5rem;
 		font-size: 1.5rem;
+		line-height: 1;
 	}
 
 	.m__content {

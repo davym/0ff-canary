@@ -25,25 +25,9 @@
 		</li>
 		{#each groupedArtists[key] as { id, name }}
 			<li>
-				<button
-					class="name {$filtersStore.artist === id ? 'selected' : ''}"
-					type="button"
-					on:click={() => {
-						filtersStore.update((state) => ({ ...state, artist: state.artist === id ? '' : id }));
-						albumPaginationStore.goToPage(1);
-						if (isMobile()) {
-							sideBarStore.set(false);
-						}
-						if ($page.url.pathname !== '/') {
-							goto('/');
-						}
-					}}
-					aria-label={$filtersStore.artist === id
-						? `Remove filter for ${name}`
-						: `Filter releases by ${name}`}
-				>
+				<a href={`/artist/${id}`} class="name">
 					{name}
-				</button>
+				</a>
 				<button
 					class="delete"
 					type="button"
@@ -83,6 +67,8 @@
 		text-overflow: ellipsis;
 		padding-inline: 1rem;
 		flex: 1;
+		text-decoration: none;
+		color: inherit;
 
 		&.selected {
 			color: var(--color-accent-primary);

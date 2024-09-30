@@ -37,6 +37,7 @@
 	let showModal: boolean = false;
 	const rate: number = 1001;
 	const duration: number = 200;
+	const itemsToPreload: number = 8;
 
 	const handleArtistSelect = (event: Event): void => {
 		const selectElement = event.target as HTMLSelectElement;
@@ -195,8 +196,6 @@
 	$: releasesTitle = !$loadingStore.isActive
 		? `Showing ${releasesOnPageStart.toLocaleString()} to ${releasesOnPageEnd.toLocaleString()} of ${finalReleases.length.toLocaleString()} results`
 		: '';
-
-	const itemsToPreload: number = 8;
 
 	$: years = Array.from(
 		{

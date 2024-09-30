@@ -10,8 +10,8 @@ export const GET: RequestHandler = async () => {
 
 	while (hasMoreResults) {
 		try {
-			const releasePageViewsResponse = await fetch(
-				`${PUBLIC_PLAUSIBLE_API_DOMAIN}/api/v1/stats/breakdown?site_id=${PUBLIC_PLAUSIBLE_API_SITE_ID}&period=custom&date=2024-01-01,${today}&property=event:page&filters=event:page==/release/*&page=${currentPage}`,
+			const plausiblePageViewsResponse = await fetch(
+				`${PUBLIC_PLAUSIBLE_API_DOMAIN}/api/v1/stats/breakdown?site_id=${PUBLIC_PLAUSIBLE_API_SITE_ID}&period=custom&date=2024-01-01,${today}&property=event:page&filters=event:page==/release/*|/artist/*&page=${currentPage}`,
 				{
 					headers: {
 						Authorization: `Bearer ${PLAUSIBLE_API_KEY}`,
@@ -20,17 +20,17 @@ export const GET: RequestHandler = async () => {
 				}
 			);
 
-			if (!releasePageViewsResponse.ok) {
-				throw new Error(`Response status: ${releasePageViewsResponse.status}`);
+			if (!plausiblePageViewsResponse.ok) {
+				throw new Error(`Response status: ${plausiblePageViewsResponse.status}`);
 			}
-			const releasePageViewsData = await releasePageViewsResponse.json();
-			const releasePageViewPages = releasePageViewsData.results.map(
+			const plausiblePageViewsData = await plausiblePageViewsResponse.json();
+			const plausiblePageViewPages = plausiblePageViewsData.results.map(
 				(result: { page: string }) => result.page
 			);
 
-			allResults = allResults.concat(releasePageViewPages);
+			allResults = allResults.concat(plausiblePageViewPages);
 
-			if (releasePageViewPages.length < 100) {
+			if (plausiblePageViewPages.length < 100) {
 				hasMoreResults = false;
 			} else {
 				currentPage++;
