@@ -26,20 +26,22 @@ export const load: PageServerLoad = async ({ params }) => {
 			throw new Error(`Failed to fetch wikiData: ${wikiDataRes.status} ${wikiDataRes.statusText}`);
 		}
 		const wikiDataData = await wikiDataRes.json();
-		const wikiTitle = wikiDataData.entities[entityId].sitelinks.enwiki.title;
-		wikipediaUrl = `https://en.wikipedia.org/wiki/${wikiTitle}`;
+		if (wikiDataData.entities[entityId].sitelinks.enwiki) {
+			const wikiTitle = wikiDataData.entities[entityId].sitelinks.enwiki?.title;
+			wikipediaUrl = `https://en.wikipedia.org/wiki/${wikiTitle}`;
 
-		const wikipediaRes = await fetch(
-			`https://en.wikipedia.org/api/rest_v1/page/summary/${wikiTitle}`
-		);
-		if (!wikipediaRes.ok) {
-			throw new Error(
-				`Failed to fetch Wikipedia data: ${wikipediaRes.status} ${wikipediaRes.statusText}`
+			const wikipediaRes = await fetch(
+				`https://en.wikipedia.org/api/rest_v1/page/summary/${wikiTitle}`
 			);
+			if (!wikipediaRes.ok) {
+				throw new Error(
+					`Failed to fetch Wikipedia data: ${wikipediaRes.status} ${wikipediaRes.statusText}`
+				);
+			}
+			const wikipediaData = await wikipediaRes.json();
+			extract = wikipediaData.extract;
+			extract_html = wikipediaData.extract_html;
 		}
-		const wikipediaData = await wikipediaRes.json();
-		extract = wikipediaData.extract;
-		extract_html = wikipediaData.extract_html;
 	}
 
 	return {

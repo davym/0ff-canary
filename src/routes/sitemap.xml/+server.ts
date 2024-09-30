@@ -40,7 +40,7 @@ export const GET: RequestHandler = async () => {
 			return new Response('Failed to fetch data', { status: 500 });
 		}
 	}
-	const staticPages = ['/', '/about', '/settings'];
+	const staticPages = ['/', '/about', '/settings', '/artists'];
 	const xml = sitemap([...staticPages, ...allResults]);
 
 	return new Response(xml, {

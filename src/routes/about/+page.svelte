@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { MainLayout, Modal } from '$lib/components';
 	import { CanaryLayered } from '$lib/icons';
-	import Off from '$lib/assets/0ff.svg';
 	import ogImage from '$lib/assets/og-image.png';
 	let showModal: boolean = false;
 

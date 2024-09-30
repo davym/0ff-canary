@@ -6,11 +6,10 @@
 	import '$lib/styles/app.css';
 	import '$lib/styles/layout.css';
 	import '$lib/styles/nprogress.css';
-	import { SideBar, MusicPlayer, ButtonSection } from '$lib/components';
+	import { SideBar, MusicPlayer } from '$lib/components';
 	import type { Interface } from '$lib/types';
 	import { sideBarStore, interfaceStore, analyticsStore } from '$lib/stores';
-	import { isMobile, navigateBack } from '$lib/utils';
-	import { CaretLeft } from '$lib/icons';
+	import { isMobile } from '$lib/utils';
 
 	NProgress.configure({
 		minimum: 0.16,

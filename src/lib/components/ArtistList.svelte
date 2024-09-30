@@ -1,16 +1,7 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
-
 	import type { Artist } from '$lib/types';
-	import {
-		artistsStore,
-		loadingStore,
-		filtersStore,
-		albumPaginationStore,
-		sideBarStore
-	} from '$lib/stores';
-	import { sortArtistsByName, groupArtistsByName, isMobile } from '$lib/utils';
+	import { artistsStore, loadingStore, filtersStore, albumPaginationStore } from '$lib/stores';
+	import { sortArtistsByName, groupArtistsByName } from '$lib/utils';
 
 	export let artists: Artist[];
 
