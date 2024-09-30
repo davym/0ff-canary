@@ -281,7 +281,7 @@
 			<div class="loading" in:fade={{ duration }} out:fade={{ duration, delay: duration }}>
 				<LoadingSpinner width="1.5rem" height="1.5rem" />
 				<div class="loading__message">
-					<span>Loading...</span>
+					<span>Fetching Releases</span>
 					{#if $loadingStore.message}
 						{$loadingStore.message}
 					{:else}
