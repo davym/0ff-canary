@@ -12,6 +12,7 @@
 	import { artistsStore } from '$lib/stores';
 	import { Link, Check } from '$lib/icons';
 	import type { PageData } from './$types';
+	import { removePunctuation } from '$lib/utils';
 
 	export let data: PageData;
 	$: album = data.album;
@@ -34,7 +35,11 @@
 	$: metaTitle = `${album.name} by ${album.artist.name}`;
 	$: metaDescription = `Release info for “${album.name}” by ${album.artist.name} courtesy of Canary by #0ff`;
 	$: canonical = `https://${domain}${$page.url.pathname}`;
-	$: isFollowing = $artistsStore.some((asArtist) => asArtist.name === album.artist.name);
+	$: isFollowing = $artistsStore.some(
+		(asArtist) =>
+			removePunctuation(asArtist.name).toLowerCase() ===
+			removePunctuation(album.artist.name || '').toLowerCase()
+	);
 </script>
 
 <svelte:head>

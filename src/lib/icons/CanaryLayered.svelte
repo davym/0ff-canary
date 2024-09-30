@@ -46,9 +46,6 @@
 		& > .y {
 			transform: translate(-0.375em, -0.3125em);
 		}
-		& > .k {
-			filter: drop-shadow(0.125em 0.125em 0.125em #00000055);
-		}
 		&:hover {
 			& path {
 				transform: none;
