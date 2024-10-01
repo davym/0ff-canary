@@ -32,6 +32,7 @@
 			releases = [];
 			releases = await fetchArtistReleases(id);
 		}
+		releases.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 	};
 
 	const handleCopyUrl = (): void => {
