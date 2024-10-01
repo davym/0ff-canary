@@ -22,6 +22,15 @@ function createReleasesStore(key: string, initialValue: Release[]) {
 		subscribe,
 		set,
 		update,
+		merge: (releases: Release[]) => {
+			update((data) => {
+				const releaseMap = new Map(data.map((item) => [item.id, item]));
+				releases.forEach((release) => {
+					releaseMap.set(release.id, release);
+				});
+				return Array.from(releaseMap.values());
+			});
+		},
 		add: (release: Release) => update((data) => [...(<[]>data), { ...release }]),
 		remove: (artistId: string) =>
 			update((data) => data && data.filter((release) => release.artistId !== artistId))

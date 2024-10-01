@@ -160,11 +160,7 @@
 								on:click={async () => {
 									releases = [];
 									releases = await fetchArtistReleases(id);
-									releasesStore.update((state) => {
-										const existingIds = new Set(state.map((item) => item.id));
-										const newReleases = releases.filter((release) => !existingIds.has(release.id));
-										return [...state, ...newReleases];
-									});
+									releasesStore.merge(releases);
 								}}
 								disabled={!releases.length}
 							>
