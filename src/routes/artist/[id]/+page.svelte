@@ -248,7 +248,7 @@
 	</div>
 </MainLayout>
 
-<Modal bind:showModal title={`Share “${name}”`}>
+<Modal bind:showModal title="Share Artist">
 	<h3><label for="artist-url">Artist URL</label></h3>
 	<div class="input-group">
 		<input
