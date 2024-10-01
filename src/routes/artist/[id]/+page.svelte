@@ -18,6 +18,8 @@
 	let showModal: boolean = false;
 	let artistUrlInput: HTMLInputElement;
 	let isCopied: boolean = false;
+	let isFetching: boolean = false;
+
 	$: ({ id, name, extract, extract_html, wikipediaUrl } = data);
 	$: releasesFromStore = $releasesStore.filter((release) => release.artistId === id);
 	$: isFollowing = $artistsStore.some((asArtist) => asArtist.id === data.id);
@@ -26,12 +28,14 @@
 	}
 
 	const loadReleases = async (): Promise<void> => {
+		isFetching = true;
 		if (releasesFromStore.length) {
 			releases = releasesFromStore;
 		} else if (id) {
 			releases = [];
 			releases = await fetchArtistReleases(id);
 		}
+		isFetching = false;
 		releases.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 	};
 
@@ -69,6 +73,9 @@
 	<meta property="twitter:url" content={canonical} />
 	<meta name="twitter:title" content={metaTitle} />
 	<link rel="canonical" href={canonical} />
+	{#if !releases.length && !isFetching}
+		<meta name="robots" content="noindex" />
+	{/if}
 </svelte:head>
 
 <MainLayout>
@@ -151,7 +158,7 @@
 									}
 								}}
 								aria-label={`Unfollow ${name}`}
-								disabled={!releases.length}
+								disabled={isFetching}
 							>
 								Unfollow
 							</button>
@@ -160,12 +167,14 @@
 								class="button small primary"
 								on:click={async () => {
 									releases = [];
+									isFetching = true;
 									releases = await fetchArtistReleases(id);
 									releasesStore.merge(releases);
+									isFetching = false;
 								}}
-								disabled={!releases.length}
+								disabled={isFetching}
 							>
-								{#if releases.length}
+								{#if !isFetching}
 									Refetch Releases
 								{:else}
 									Fetching Releases&hellip;
@@ -207,6 +216,31 @@
 								<span></span>
 							{/each}
 						{/if}
+					</div>
+				</div>
+			{:else if !isFetching}
+				<div class="release-section" in:fade={{ duration }}>
+					<div class="prose slim">
+						<h2>No Releases :(</h2>
+						<p>
+							This artist has no releases* in the <a
+								href={`http://musicbrainz.org/artist/${id}`}
+								target="_blank"
+								rel="noopener noreferrer nofollow">MusicBrainz</a
+							>
+							database. Perhaps this is a good opportunity to
+							<a
+								href="https://musicbrainz.org/release/add"
+								target="_blank"
+								rel="noopener noreferrer">contribute</a
+							>. 😉
+						</p>
+						<p>
+							<small
+								>* Compilations or albums filed under “Various Artists” are not considered an
+								artist‘s release.</small
+							>
+						</p>
 					</div>
 				</div>
 			{/if}
