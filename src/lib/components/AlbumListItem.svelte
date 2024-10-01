@@ -62,6 +62,10 @@
 			@media (hover: hover) and (pointer: fine) {
 				&:hover {
 					opacity: 1;
+
+					& .cover {
+						filter: none;
+					}
 				}
 			}
 		}

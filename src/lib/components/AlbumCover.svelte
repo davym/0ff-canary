@@ -72,6 +72,7 @@
 		align-items: center;
 		justify-content: center;
 		position: relative;
+		transition: filter 0.1s ease-out;
 
 		&.future {
 			filter: grayscale(100%);
