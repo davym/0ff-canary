@@ -1,5 +1,25 @@
 [
   {
+    "name": "The Dirty Nil",
+    "id": "039ab342-efb8-472e-817c-5800d3a70493"
+  },
+  {
+    "name": "Gnarwolves",
+    "id": "0658adf9-a397-4600-b3ab-5be1c4994cd5"
+  },
+  {
+    "name": "Murder by Death",
+    "id": "115eda90-a9f4-4437-9e4d-513daa0d5f35"
+  },
+  {
+    "name": "Get Dead",
+    "id": "1835c063-a925-4e00-afe2-6059666bb7c2"
+  },
+  {
+    "name": "Drug Church",
+    "id": "32d2897c-4c91-46db-8161-f51d3f4f0d93"
+  },
+  {
     "name": "Alkaline Trio",
     "id": "69421e11-e4c3-4854-951b-ceab4972e38e"
   },
@@ -8,20 +28,44 @@
     "id": "6fe07aa5-fec0-4eca-a456-f29bff451b04"
   },
   {
+    "name": "Langhorns",
+    "id": "867e74ef-e9dd-4b66-b214-1d8f98e4d10e"
+  },
+  {
+    "name": "Gatsbys American Dream",
+    "id": "86ce7fc0-6bee-49b1-9cbf-10941485a1dc"
+  },
+  {
+    "name": "Matt Skiba and The Sekrets",
+    "id": "8cbf1b31-a733-4f38-a0a3-6c0c27919e45"
+  },
+  {
     "name": "Forus",
     "id": "8ff5c97e-60cc-41e7-a614-dd22c793d9c1"
   },
   {
-    "name": "The Dirty Nil",
-    "id": "039ab342-efb8-472e-817c-5800d3a70493"
+    "name": "Interpol",
+    "id": "b23e8a63-8f47-4882-b55b-df2c92ef400e"
+  },
+  {
+    "name": "Nada Surf",
+    "id": "b9a2a9a6-7a40-48a6-bcb1-8eff5b89ad5b"
+  },
+  {
+    "name": "The Living End",
+    "id": "cca49e52-1f1e-4c16-9e40-fedebcea065e"
+  },
+  {
+    "name": "Noel Gallagher’s High Flying Birds",
+    "id": "d5f54887-117b-42a1-9aee-8780b84ebaba"
+  },
+  {
+    "name": "Origami Angel",
+    "id": "efb2b5ce-8a50-4857-826d-c25d7e8941ba"
   },
   {
     "name": "Architects",
     "id": "05dffdbe-dc6e-4c8d-a075-50a09c4cb45c"
-  },
-  {
-    "name": "Gnarwolves",
-    "id": "0658adf9-a397-4600-b3ab-5be1c4994cd5"
   },
   {
     "name": "Dreamcar",
@@ -42,10 +86,6 @@
   {
     "name": "The Matches",
     "id": "0fc0b0e8-9e40-432d-973e-a184b7be01e1"
-  },
-  {
-    "name": "Murder by Death",
-    "id": "115eda90-a9f4-4437-9e4d-513daa0d5f35"
   },
   {
     "name": "Midtown",
@@ -70,10 +110,6 @@
   {
     "name": "Superheaven",
     "id": "16f7e748-59b4-4705-959c-9276be0ebf6a"
-  },
-  {
-    "name": "Get Dead",
-    "id": "1835c063-a925-4e00-afe2-6059666bb7c2"
   },
   {
     "name": "Motion City Soundtrack",
@@ -136,16 +172,16 @@
     "id": "3165f5e0-44ff-446a-81d7-c09ec69661ae"
   },
   {
-    "name": "Drug Church",
-    "id": "32d2897c-4c91-46db-8161-f51d3f4f0d93"
-  },
-  {
     "name": "Modern Color",
     "id": "3436fc1e-eccb-4ed2-bd09-b21956e5b3e3"
   },
   {
     "name": "The Violet Mindfield",
     "id": "3476ccf6-ad76-430c-b12f-7c397a7dc2d9"
+  },
+  {
+    "name": "Palaxy Tracks",
+    "id": "35375a4a-159a-4704-a7da-7d195ddf7cbf"
   },
   {
     "name": "Jeremy Messersmith",
@@ -300,10 +336,6 @@
     "id": "8262d8e4-9137-4bb3-a787-3caabbbc13e9"
   },
   {
-    "name": "Gatsbys American Dream",
-    "id": "86ce7fc0-6bee-49b1-9cbf-10941485a1dc"
-  },
-  {
     "name": "Pinegrove",
     "id": "871fe26f-544d-4275-a5dd-af5442d15b92"
   },
@@ -314,10 +346,6 @@
   {
     "name": "Home Grown",
     "id": "8c6e9baa-ebe4-4ed6-b85f-bc9e9a0b155f"
-  },
-  {
-    "name": "Matt Skiba and The Sekrets",
-    "id": "8cbf1b31-a733-4f38-a0a3-6c0c27919e45"
   },
   {
     "name": "I Am the Avalanche",
@@ -368,20 +396,12 @@
     "id": "b0799818-22cb-4564-8e68-3c410d0722ee"
   },
   {
-    "name": "Interpol",
-    "id": "b23e8a63-8f47-4882-b55b-df2c92ef400e"
-  },
-  {
     "name": "Silversun Pickups",
     "id": "b5bd9f88-962e-4730-84a7-795592ba42e8"
   },
   {
     "name": "Pixies",
     "id": "b6b2bb8d-54a9-491f-9607-7b546023b433"
-  },
-  {
-    "name": "Nada Surf",
-    "id": "b9a2a9a6-7a40-48a6-bcb1-8eff5b89ad5b"
   },
   {
     "name": "Jimmy Eat World",
@@ -432,16 +452,12 @@
     "id": "ca452a01-b9db-461d-8e62-23d68747f6ab"
   },
   {
+    "name": "Pidgeon",
+    "id": "ca7cebaf-8c06-4e8e-a7bf-edc546d04624"
+  },
+  {
     "name": "Streetlight Manifesto",
     "id": "cbc9199f-944b-42e9-a945-627c9fc0ba6e"
-  },
-  {
-    "name": "The Living End",
-    "id": "cca49e52-1f1e-4c16-9e40-fedebcea065e"
-  },
-  {
-    "name": "Noel Gallagher’s High Flying Birds",
-    "id": "d5f54887-117b-42a1-9aee-8780b84ebaba"
   },
   {
     "name": "Grouplove",
@@ -474,10 +490,6 @@
   {
     "name": "Anthony Green",
     "id": "eba4c290-2ce6-42c9-affd-5b1ffab84a8f"
-  },
-  {
-    "name": "Origami Angel",
-    "id": "efb2b5ce-8a50-4857-826d-c25d7e8941ba"
   },
   {
     "name": "Descendents",
