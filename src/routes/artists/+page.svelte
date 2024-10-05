@@ -10,7 +10,7 @@
 
 	const metaTitle: string = 'Random Collection of Artists';
 	const metaDescription: string =
-		'A—periodically updated—random assortment of links to artist pages that users of Canary have visited.';
+		'A periodically updated, random assortment of links to artist pages that users of Canary have visited.';
 </script>
 
 <svelte:head>
@@ -33,7 +33,7 @@
 			<div class="prose center">
 				<h1>Random Collection of Artists</h1>
 				<p>
-					This is a—periodically updated—random assortment of links to artist pages that users of
+					This is a periodically updated, random assortment of links to artist pages that users of
 					Canary have visited. You could check them out and start following if you’d like, or add
 					artists of your own choosing in the {#if $sideBarStore}menu to your left{:else}<button
 							class="link"

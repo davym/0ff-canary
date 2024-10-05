@@ -143,7 +143,7 @@
 		const allReleases = await fetchReleasesWithControlledRate(artists);
 
 		// Remove duplicates based on title
-		const uniqueReleases = await Array.from(
+		const uniqueReleases = Array.from(
 			new Map(allReleases.map((release) => [`${release.title}`, release])).values()
 		);
 		// Ensure the release dates are valid and sort by release date (newest first)
