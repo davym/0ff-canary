@@ -6,6 +6,7 @@ export interface Release {
 	date: Date;
 	type?: string;
 	cover?: string;
+	hidden: boolean;
 }
 
 export interface Artist {

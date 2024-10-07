@@ -8,3 +8,4 @@ export { default as musicStore } from './musicStore';
 export { releasesStore } from './releasesStore';
 export { sideBarStore } from './sideBarStore';
 export { interfaceStore } from './interfaceStore';
+export { hiddenReleasesStore } from './hiddenReleasesStore';

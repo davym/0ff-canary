@@ -14,7 +14,8 @@
 		loadingStore,
 		filtersStore,
 		albumPaginationStore,
-		interfaceStore
+		interfaceStore,
+		hiddenReleasesStore
 	} from '$lib/stores';
 
 	import { AlbumListItem, MainLayout, ButtonSection, Modal } from '$lib/components';
@@ -174,6 +175,7 @@
 				new Date(release.date).getFullYear() >= $filtersStore.timeframe.start &&
 				new Date(release.date).getFullYear() <= $filtersStore.timeframe.end
 		)
+		.filter((release) => !$hiddenReleasesStore.includes(release.id))
 		.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 	$: slicedReleases = finalReleases.slice(
@@ -312,6 +314,7 @@
 								date={new Date(release.date)}
 								id={release.id}
 								loading={i > itemsToPreload - 1 ? 'lazy' : 'eager'}
+								isHideable
 							/>
 						</div>
 					{/each}

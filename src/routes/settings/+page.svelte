@@ -3,7 +3,13 @@
 	import '$lib/styles/upload.css';
 	import { MainLayout } from '$lib/components';
 	import { downloadLocalStorageItem, uploadArtistsData, fadeImage } from '$lib/utils';
-	import { artistsStore, releasesStore, interfaceStore, analyticsStore } from '$lib/stores';
+	import {
+		artistsStore,
+		releasesStore,
+		interfaceStore,
+		analyticsStore,
+		hiddenReleasesStore
+	} from '$lib/stores';
 	import type { Message } from '$lib/types';
 	import why from '$lib/assets/why.gif';
 
@@ -194,6 +200,7 @@
 										message = null;
 										artistsStore.set([]);
 										releasesStore.set([]);
+										hiddenReleasesStore.set([]);
 									}}
 									disabled={!$releasesStore.length && !$artistsStore.length}>Delete All Data</button
 								>
