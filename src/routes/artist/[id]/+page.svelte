@@ -3,6 +3,7 @@
 	import { scale, fly, fade } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
 	import { backIn, backOut, expoOut } from 'svelte/easing';
+	import { Render } from 'svelte-purify/browser-only';
 	import { page } from '$app/stores';
 	import { MainLayout, AlbumListItem, ButtonSection, Modal } from '$lib/components';
 	import { fetchArtistReleases } from '$lib/utils/fetchArtistReleases';
@@ -110,7 +111,7 @@
 					</h1>
 					{#if extract_html}
 						<div class="narrow prose" in:fade={{ duration }}>
-							{@html extract_html}
+							<Render html={extract_html} config={{ USE_PROFILES: { html: true } }} />
 							<p>
 								<a href={wikipediaUrl} target="_blank" rel="noopener noreferrer nofollow">
 									Continue reading at Wikipedia&hellip;

@@ -3,7 +3,7 @@
 	import { Close } from '$lib/icons';
 	export let showModal: boolean;
 	export let title: string = '';
-	export let onClose: Function = () => {};
+	export let onClose: () => void = () => {};
 	let dialog: HTMLDialogElement;
 
 	$: if (dialog) {

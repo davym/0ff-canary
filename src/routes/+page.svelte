@@ -39,12 +39,11 @@
 	const duration: number = 200;
 	const itemsToPreload: number = 8;
 
-	const handleArtistSelect = (event: Event): void => {
-		const selectElement = event.target as HTMLSelectElement;
+	const handleArtistSelect = (): void => {
 		albumPaginationStore.goToPage(1);
 	};
 
-	const handleFilterChange = (event: Event): void => {
+	const handleFilterChange = (): void => {
 		albumPaginationStore.goToPage(1);
 	};
 
