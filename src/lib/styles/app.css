@@ -211,6 +211,27 @@ h3 {
 			margin-block: 2.5rem;
 		}
 	}
+
+	a {
+		&[target='_blank'] {
+			color: var(--color-accent-tertiary);
+
+			&:after {
+				content: '↗';
+				display: inline-block;
+				opacity: 0.6;
+				font-size: 1.25rem;
+				padding-inline-start: 0.25rem;
+				line-height: 0;
+			}
+
+			@media (hover: hover) and (pointer: fine) {
+				&:hover:after {
+					opacity: 1;
+				}
+			}
+		}
+	}
 }
 
 hr {
@@ -244,6 +265,7 @@ select {
 	display: inline-flex;
 	align-items: center;
 	column-gap: 0.5em;
+	text-decoration: none;
 
 	&.success {
 		border-color: var(--color-positive);
@@ -276,6 +298,30 @@ select {
 		@media (hover: hover) and (pointer: fine) {
 			&:not(:disabled):hover {
 				background: var(--color-accent-primary);
+				color: var(--color-bg);
+			}
+		}
+	}
+
+	&.secondary {
+		border-color: var(--color-accent-secondary);
+		color: var(--color-accent-secondary);
+
+		@media (hover: hover) and (pointer: fine) {
+			&:not(:disabled):hover {
+				background: var(--color-accent-secondary);
+				color: var(--color-bg);
+			}
+		}
+	}
+
+	&.tertiary {
+		border-color: var(--color-accent-tertiary);
+		color: var(--color-accent-tertiary);
+
+		@media (hover: hover) and (pointer: fine) {
+			&:not(:disabled):hover {
+				background: var(--color-accent-tertiary);
 				color: var(--color-bg);
 			}
 		}
@@ -314,6 +360,12 @@ select {
 	&.small {
 		font-size: 0.875rem;
 		padding: 0.5rem 1rem;
+	}
+
+	&.tiny {
+		font-size: 0.6875rem;
+		padding: 0.3em 0.6em;
+		border-width: 0.0625rem;
 	}
 
 	&.icon {
