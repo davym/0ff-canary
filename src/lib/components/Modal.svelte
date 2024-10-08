@@ -57,7 +57,7 @@
 		background: var(--color-bg);
 		color: var(--color-fg);
 		position: fixed;
-		flex-direction: column-reverse;
+		flex-direction: column;
 		margin: auto;
 
 		&::backdrop {
