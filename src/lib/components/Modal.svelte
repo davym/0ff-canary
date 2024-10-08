@@ -25,11 +25,6 @@
 </script>
 
 <dialog class="m" bind:this={dialog} on:close={handleOnClose}>
-	<div class="m__content">
-		<div class="prose">
-			<slot />
-		</div>
-	</div>
 	<div class="m__header">
 		<h3 class="m__title">{title}</h3>
 		<div class="m__close">
@@ -47,6 +42,11 @@
 			</ButtonSection>
 		</div>
 	</div>
+	<div class="m__content">
+		<div class="prose">
+			<slot />
+		</div>
+	</div>
 </dialog>
 
 <style>
@@ -57,7 +57,7 @@
 		background: var(--color-bg);
 		color: var(--color-fg);
 		position: fixed;
-		flex-direction: column-reverse;
+		flex-direction: column;
 		margin: auto;
 
 		&::backdrop {
@@ -79,6 +79,8 @@
 		height: var(--grid-size);
 		box-shadow: 0 0.0625rem 0 var(--color-fg);
 		background: var(--color-bg);
+		position: sticky;
+		top: 0;
 	}
 
 	.m__title {
@@ -91,9 +93,8 @@
 	}
 
 	.m__content {
-		padding: 1.5rem;
-		overflow-y: auto;
 		flex: 1;
+		padding: 1.5rem;
 	}
 
 	.m__close {
