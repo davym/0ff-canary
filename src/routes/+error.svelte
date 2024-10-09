@@ -28,7 +28,7 @@
 		{:else}
 			<p>
 				<strong><em>Oops!</em></strong> Well this is embrassing. It looks like this page is broke as
-				a joke! It’s bound to happen from time to time. If you’re visitting an actual page that exists
+				a joke! It’s bound to happen from time to time. If you’re visiting an actual page that exists
 				then it‘s most likely an external data source is down. Usually these things resolve themselves
 				in a few minutes, but it’s hard to know exactly when things might be working again.
 			</p>
