@@ -1,5 +1,9 @@
 [
   {
+    "name": "Queen",
+    "id": "0383dadf-2a4e-4d10-a46a-e9e041da8eb3"
+  },
+  {
     "name": "The Dirty Nil",
     "id": "039ab342-efb8-472e-817c-5800d3a70493"
   },
@@ -86,6 +90,10 @@
   {
     "name": "The Get Go",
     "id": "1db24d4c-22b1-4df2-bcff-b9b831c1a9a7"
+  },
+  {
+    "name": "Taylor Swift",
+    "id": "20244d07-534f-4eff-b4d4-930878889970"
   },
   {
     "name": "The Mars Volta",
@@ -398,6 +406,10 @@
   {
     "name": "Lullatone",
     "id": "a49b394a-2d64-4d57-b4fe-b389a3cabafd"
+  },
+  {
+    "name": "Radiohead",
+    "id": "a74b1b7f-71a5-4011-9441-d0b5e4122711"
   },
   {
     "name": "Basement",
