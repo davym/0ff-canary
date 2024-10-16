@@ -25,6 +25,7 @@
 		const removeImage = () => {
 			isLoaded = true;
 			image.remove();
+			src = '';
 		};
 
 		if (image.complete && image.naturalHeight !== 0) {
