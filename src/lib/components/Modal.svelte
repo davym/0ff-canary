@@ -24,9 +24,15 @@
 	};
 </script>
 
-<dialog class="m" bind:this={dialog} on:close={handleOnClose}>
+<dialog
+	class="m"
+	bind:this={dialog}
+	on:close={handleOnClose}
+	aria-modal="true"
+	aria-labelledby="modal-title"
+>
 	<div class="m__header">
-		<h3 class="m__title">{title}</h3>
+		<h3 class="m__title" id="modal-title">{title}</h3>
 		<div class="m__close">
 			<ButtonSection isFixedSize={true}>
 				<button
