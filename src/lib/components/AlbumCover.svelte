@@ -22,16 +22,23 @@
 			isLoaded = true;
 		};
 
+		const removeImage = () => {
+			isLoaded = true;
+			image.remove();
+		};
+
 		if (image.complete && image.naturalHeight !== 0) {
 			revealImage();
 		} else {
 			isCached = false;
 			image.addEventListener('load', revealImage);
+			image.addEventListener('error', removeImage);
 		}
 
 		return {
 			destroy() {
 				image.removeEventListener('load', revealImage);
+				image.removeEventListener('error', removeImage);
 			}
 		};
 	};
