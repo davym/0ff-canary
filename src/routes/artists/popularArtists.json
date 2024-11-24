@@ -32,6 +32,10 @@
     "id": "0a91cea1-52f2-4212-aa2f-7baf3627d71f"
   },
   {
+    "name": "Electric Light Orchestra",
+    "id": "0c502791-4ee9-4c5f-9696-0602b721ff3b"
+  },
+  {
     "name": "Balance and Composure",
     "id": "0d20c42d-133c-429d-8f76-3c2458aee3e8"
   },
@@ -132,6 +136,10 @@
     "id": "2f360fd9-6440-4896-9f45-8156e8b0b204"
   },
   {
+    "name": "The Menzingers",
+    "id": "3071d829-b9ca-4499-b4f5-74d6d8531aed"
+  },
+  {
     "name": "PUP",
     "id": "3165f5e0-44ff-446a-81d7-c09ec69661ae"
   },
@@ -166,6 +174,10 @@
   {
     "name": "Useless ID",
     "id": "3bb24e11-821a-4e4e-bd89-e0a2452474cf"
+  },
+  {
+    "name": "Be Cool Cowboy",
+    "id": "3e087b3e-9c37-4634-85f7-217a5d426caf"
   },
   {
     "name": "hellogoodbye",
@@ -292,6 +304,10 @@
     "id": "72a4f1ba-de2b-424e-a8d8-7fcdf3e067df"
   },
   {
+    "name": "trauma ray",
+    "id": "7406b0d5-657d-445b-8cb0-781bb4e3d276"
+  },
+  {
     "name": "Finch",
     "id": "746737be-e792-42bb-b18c-fb46d7935d7a"
   },
@@ -370,6 +386,10 @@
   {
     "name": "The Decemberists",
     "id": "97b1142f-c71e-4971-8736-4a8ceaf6b4c3"
+  },
+  {
+    "name": "Stephen Marley",
+    "id": "99298e13-87d6-4f0c-9334-d327d73f83c0"
   },
   {
     "name": "K’s Choice",
@@ -508,12 +528,20 @@
     "id": "cbc9199f-944b-42e9-a945-627c9fc0ba6e"
   },
   {
+    "name": "Damian “Jr. Gong” Marley",
+    "id": "cbfb9bcd-c5a0-4d7c-865f-2c641c171e1c"
+  },
+  {
     "name": "The Living End",
     "id": "cca49e52-1f1e-4c16-9e40-fedebcea065e"
   },
   {
     "name": "The Detachment Kit",
     "id": "cdf2544b-ddcd-4c31-86c2-0500307629b8"
+  },
+  {
+    "name": "Narrow Head",
+    "id": "d2c944b5-7475-47bd-b3bf-df1b68f80a68"
   },
   {
     "name": "Noel Gallagher’s High Flying Birds",
