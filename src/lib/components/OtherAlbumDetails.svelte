@@ -21,7 +21,7 @@
 		<ul>
 			<li>
 				<a
-					href="https://bandcamp.com/search?q={searchString}&item_type=a"
+					href="https://bandcamp.com/search?q={searchString}"
 					target="_blank"
 					rel="noopener noreferrer">Bandcamp</a
 				>
