@@ -76,7 +76,7 @@
 		musicStore.pauseTrack();
 		musicStore.updateCurrentTime(0);
 	}}
-/>
+></audio>
 {#if src}
 	<aside
 		transition:fly={{ easing: expoOut, duration: 500, opacity: 0, y: '3rem' }}
